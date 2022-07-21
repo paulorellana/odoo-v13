@@ -4,6 +4,8 @@
 	<t t-extend="OrderReceipt">
 		<t t-jquery=".pos-receipt" t-operation="replace">
 			<div class="pos-receipt">
+				<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed" rel="stylesheet"/>
+				
 				<div class="logo" t-if="widget.pos.config.receipt_show_logo">
 					<div class="pos-center-align">
 						<!-- <img t-att-src='widget.pos.company_logo_base64' style="width: 85%;padding-bottom: 15px;"/> -->
@@ -118,7 +120,7 @@
 				</div>
 				<br />
 
-				<table class='receipt-orderlines' style="border-top: 1px black dotted">
+				<table class='receipt-orderlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 					<colgroup>
 						<col width='15%' />
 						<col width='55%' />
@@ -139,7 +141,7 @@
 							<b>Importe</b>
 						</th>
 					</tr>
-					<tr t-foreach="orderlines" t-as="orderline" style="border-bottom: 1px black dotted">
+					<tr t-foreach="orderlines" t-as="orderline" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<td class="pos-left-align">
 							<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),3)" />
 						</td>
