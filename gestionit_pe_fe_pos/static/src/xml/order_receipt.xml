@@ -177,7 +177,7 @@
 				</table>
 
 				<br />
-				<table class='receipt-total' style="width:100%">
+				<table class='receipt-total' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 					<tr>
 						<td>
 							<b>SUBTOTAL</b>
