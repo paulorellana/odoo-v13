@@ -61,7 +61,7 @@ class SendMessage(models.TransientModel):
             message_string = parse.quote(self.message)
             message_string = message_string[:(len(message_string) - 3)]
             number = self.user_id.mobile
-            link = "https://api.whatsapp.com/send?phone=" + number
+            link = "https://web.whatsapp.com/send?phone=" + number
             send_msg = {
                 'type': 'ir.actions.act_url',
                 'url': link + "&text=" + message_string,

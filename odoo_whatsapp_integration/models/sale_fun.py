@@ -96,7 +96,7 @@ class SaleOrderValidation(models.Model):
             ph_no = "".join(ph_no)
             ph_no = "+" + ph_no
 
-            link = "https://web.whatsapp.com/send?phone=" + ph_no
+            link = "https://api.whatsapp.com/send?phone=" + ph_no
             message_string = parse.quote(custom_msg)
 
             url_id = link + "&text=" + message_string

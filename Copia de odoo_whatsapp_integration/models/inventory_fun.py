@@ -3,10 +3,10 @@ import urllib.parse as parse
 from odoo.exceptions import UserError
 from itertools import groupby
 
-class InvoiceTransferDone(models.Model):
-    _inherit = 'account.move'
+class InventoryTransferDone(models.Model):
+    _inherit = 'stock.picking'
 
-    def invoice_whatsapp(self):
+    def inventory_whatsapp(self):
         record_phone = self.partner_id.mobile
         if not record_phone:
             view = self.env.ref('odoo_whatsapp_integration.warn_message_wizard')
@@ -48,7 +48,7 @@ class InvoiceTransferDone(models.Model):
                     'view_mode': 'form',
                     'view_type': 'form',
                     'context': {
-                        'default_template_id': self.env.ref('odoo_whatsapp_integration.whatsapp_invoice_template').id},
+                        'default_template_id': self.env.ref('odoo_whatsapp_integration.whatsapp_inventory_template').id},
                     }
 
     def send_direct_message(self):
@@ -88,15 +88,16 @@ class InvoiceTransferDone(models.Model):
         else:
             prods = ""
             for rec in self:
-                for id in rec.invoice_line_ids:
-                            prods = prods + "*" +str(id.product_id.name) + " : " + str(id.quantity) + "* \n"
+                for id in rec.move_line_ids_without_package:
+                    prods = prods + "*" +str(id.product_id.name) + " : " + str(id.qty_done) + "* \n"
 
-            custom_msg = "Hello *{}*, your Invoice *{}* with amount *{} {}* is ready. \nYour invoice contains following items:\n {}".format(str(self.partner_id.name),str(self.name),str(self.currency_id.symbol),str(self.amount_total),prods)
+            custom_msg = "Hello *{}*, your order *{}* is ready.\nOrder contains following items: \n{}".format(
+                str(self.partner_id.name), str(self.name), prods)
             ph_no = [number for number in record_phone if number.isnumeric()]
             ph_no = "".join(ph_no)
             ph_no = "+" + ph_no
 
-            link = "https://api.whatsapp.com/send?phone=" + ph_no
+            link = "https://web.whatsapp.com/send?phone=" + ph_no
             message_string = parse.quote(custom_msg)
 
             url_id = link + "&text=" + message_string
@@ -112,34 +113,34 @@ class InvoiceTransferDone(models.Model):
         return next(partners, True) and not next(partners, False)
 
     def multi_sms(self):
-        invoice_order_ids = self.env['account.move'].browse(self.env.context.get('active_ids'))
+        inventory_order_ids = self.env['stock.picking'].browse(self.env.context.get('active_ids'))
 
         cust_ids = []
-        invoice_nums = []
-        for sale in invoice_order_ids:
-            cust_ids.append(sale.partner_id.id)
-            invoice_nums.append(sale.name)
+        inventory_nums = []
+        for inventory in inventory_order_ids:
+            cust_ids.append(inventory.partner_id.id)
+            inventory_nums.append(inventory.name)
 
         # To check unique customers
         cust_check = self.check_value(cust_ids)
 
         if cust_check:
-            invoice_numbers = invoice_order_ids.mapped('name')
-            invoice_numbers = "\n".join(invoice_numbers)
+            inventory_numbers = inventory_order_ids.mapped('name')
+            inventory_numbers = "\n".join(inventory_numbers)
 
             form_id = self.env.ref('odoo_whatsapp_integration.whatsapp_multiple_message_wizard_form').id
             product_all = []
-            for each in invoice_order_ids:
+            for each in inventory_order_ids:
                 prods = ""
-                for id in each.invoice_line_ids:
-                    prods = prods + "*" + "Product: " + str(id.product_id.name) + ", Qty: " + str(id.quantity) + "* \n"
+                for id in each.move_ids_without_package:
+                    prods = prods + "*" +  "Product: " + str(id.product_id.name) + "* \n"
                 product_all.append(prods)
 
-            custom_msg = "Hi" + " " + self.partner_id.name + ',' + '\n' + "Your Invoice" + '\n' + invoice_numbers + \
+            custom_msg = "Hi" + " " + self.partner_id.name + ',' + '\n' + "Your Orders" + '\n' + inventory_numbers + \
                          ' ' + '\n' + "are ready for review.\n"
             counter = 0
             for every in product_all:
-                custom_msg = custom_msg + "Your order " + "*" + invoice_nums[
+                custom_msg = custom_msg + "Your order " + "*" + inventory_nums[
                     counter] + "*" + " contains following items: \n{}".format(every) + '\n'
                 counter += 1
 

@@ -41,7 +41,7 @@ class ShareAction(models.TransientModel):
             message_string = self.note + '%0a' + common_message + '%0a''%0a' + urllib.quote(self.share_link)
             related_record = self.env[self.res_model].search([('id', '=', int(self.res_id))])
             related_record.message_post(body=message_string)
-            link = "https://api.whatsapp.com/send?phone=" + self.mobile_number
+            link = "https://web.whatsapp.com/send?phone=" + self.mobile_number
             return {
                 'type': 'ir.actions.act_url',
                 'url': link + "&text=" + message_string,
