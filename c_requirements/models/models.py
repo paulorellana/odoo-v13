@@ -6,7 +6,7 @@ class product(models.Model):
 	_inherit = 'product.template'
 	n_porc_utilidad = fields.Float(string="%margen:")
 	marca = fields.Char(string="Marca:")
-	descripcion = fields.Text(string="Descripcion:")
+	descripcion = fields.Text(string="")
 
 	@api.onchange('n_porc_utilidad')
 	def _n_porc_utilidad(self):
