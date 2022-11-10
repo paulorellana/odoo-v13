@@ -24,9 +24,13 @@
          <field name="sunat_code" position="after">
 	         <field name="marca"/>
 	       </field>
-          <field name="description" position="after">
-           <field name="descripcion"/>
+         <field name="description" position="before">
+          <group string="Descripcion">
+	          <field name="descripcion"/>
+          <group>
 	       </field>
+
+
       </field>
     </record>
 <!---

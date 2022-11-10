@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class product(models.Model):
 	_inherit = 'product.template'
-	n_porc_utilidad = fields.Float(string="% Utilidad:")
+	n_porc_utilidad = fields.Float(string="%margen:")
 	marca = fields.Char(string="Marca:")
 	descripcion = fields.Text(string="Descripcion:")
 
