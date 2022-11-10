@@ -10,7 +10,6 @@ class product(models.Model):
 
 	@api.onchange('n_porc_utilidad')
 	def _n_porc_utilidad(self):
-#           self.standard_price = self.list_price/(1+self.n_porc_utilidad/100)
 			self.list_price = self.standard_price*(1+self.n_porc_utilidad/100)
 
 class partner(models.Model):
