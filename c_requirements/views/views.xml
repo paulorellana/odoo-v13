@@ -27,10 +27,8 @@
          <field name="description" position="before">
           <group string="Descripcion">
 	          <field name="descripcion"/>
-          <group>
+          </group>
 	       </field>
-
-
       </field>
     </record>
 <!---
