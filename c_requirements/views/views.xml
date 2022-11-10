@@ -1,5 +1,6 @@
 <odoo>
   <data>
+  <!--
     <record model="ir.ui.view" id="abc_view">
       <field name="name">Categoria ABC</field>
       <field name="model">res.partner</field>
@@ -10,6 +11,7 @@
 	       </field>
       </field>
     </record>
+    -->
 
     <record model="ir.ui.view" id="por_utilidad_view">
       <field name="name">Porcentaje utilidad</field>
@@ -21,6 +23,8 @@
 	       </field>
          <field name="sunat_code" position="after">
 	         <field name="marca"/>
+	       </field>
+          <field name="description" position="after">
            <field name="descripcion"/>
 	       </field>
       </field>
