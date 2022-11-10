@@ -3,7 +3,6 @@
 from odoo import models, fields, api
 
 class product(models.Model):
-#     _name = 'po_model_module.po_model_module'
 	_inherit = 'product.template'
 	n_porc_utilidad = fields.Float(string="% Utilidad:")
 	marca = fields.Char(string="Marca:")
@@ -15,9 +14,8 @@ class product(models.Model):
 			self.list_price = self.standard_price*(1+self.n_porc_utilidad/100)
 
 class partner(models.Model):
-#     _name = 'po_model_module.po_model_module'
 	_inherit = 'res.partner'
-	abc = fields.Selection([(1,'A'),( 2,'B'),(3,'C')],string="Clasificación ABC:")
+	abc = fields.Selection([('a','A'),('b','B'),('c','C')],string="Clasificación ABC:")
 
 #class company(models.Model):
 #	_inherit = 'res.company'
