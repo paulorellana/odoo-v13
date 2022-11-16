@@ -21,9 +21,11 @@
       	 <field name="list_price" position="after">
 	         <field name="n_porc_utilidad"/>
 	       </field>
+         <field name="default_code" position="after">
+	         <field name="cod_interno"/>
+	       </field>
          <field name="sunat_code" position="after">
 	         <field name="marca"/>
-           <field name="cod_interno"/>
 	       </field>
       </field>
     </record>
