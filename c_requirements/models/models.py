@@ -7,7 +7,7 @@ class product(models.Model):
 	n_porc_utilidad = fields.Float(string="%margen:")
 	marca = fields.Char(string="Marca:")
 	descripcion = fields.Text(string="")
-	cod_interno = fields.Text(string="Código interno:")
+	cod_interno = fields.Char(string="Código interno:")
 
 	@api.onchange('n_porc_utilidad')
 	def _n_porc_utilidad(self):
