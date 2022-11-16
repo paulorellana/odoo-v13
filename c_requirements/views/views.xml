@@ -23,6 +23,7 @@
 	       </field>
          <field name="sunat_code" position="after">
 	         <field name="marca"/>
+           <field name="cod_interno"/>
 	       </field>
       </field>
     </record>
