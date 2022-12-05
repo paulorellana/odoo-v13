@@ -143,7 +143,8 @@
 					</tr>
 					<tr t-foreach="orderlines" t-as="orderline" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<td class="pos-left-align">
-							<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),3)" />
+							<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),3)" />-->
+							<t t-esc="orderline.get_unit_price()" />
 						</td>
 
 						<td>
@@ -168,10 +169,11 @@
 							</t>
 						</td>
 						<td class="pos-center-align">
-							<t t-esc="widget.format_currency(orderline.get_unit_price(),0.01,'total')" />
+							<!--<t t-esc="widget.format_currency(orderline.get_unit_price(),0.01,'total')" />-->
+							<t t-esc="widget.format_currency_no_symbol(orderline.get_unit_price(),0.01,'total')" />
 						</td>
 						<td class="pos-right-align">
-							<t t-esc="widget.format_currency(orderline.get_price_with_tax(),0.01,'total',0)" />
+							<t t-esc="widget.format_currency_no_symbol(orderline.get_price_with_tax(),0.01,'total',0)" />
 						</td>
 					</tr>
 				</table>
@@ -183,7 +185,7 @@
 							<b>SUBTOTAL</b>
 						</td>
 						<td class="pos-right-align">
-							<t t-esc="widget.format_currency(order.get_total_without_tax(),0.01,'total',1)" />
+							<t t-esc="widget.format_currency_no_symbol(order.get_total_without_tax(),0.01,'total',1)" />
 						</td>
 					</tr>
 					<tr t-if="order.get_total_discount() > 0">
@@ -191,7 +193,7 @@
 							<b>Descuento:</b>
 						</td>
 						<td class="pos-right-align">
-							<t t-esc="widget.format_currency(order.get_total_discount(),0.01,'total',1)" />
+							<t t-esc="widget.format_currency_no_symbol(order.get_total_discount(),0.01,'total',1)" />
 						</td>
 					</tr>
 					<tr>
@@ -199,7 +201,7 @@
 							<b>IGV 18%</b>
 						</td>
 						<td class="pos-right-align">
-							<t t-esc="widget.format_currency(order.get_total_tax(),0.01,'total',1)" />
+							<t t-esc="widget.format_currency_no_symbol(order.get_total_tax(),0.01,'total',1)" />
 						</td>
 					</tr>
 
@@ -208,7 +210,7 @@
 							<b>IMPORTE TOTAL:</b>
 						</td>
 						<td class="pos-right-align">
-							<t t-esc="widget.format_currency(Math.abs(order.get_total_with_tax()),0.0001,'total',1)" />
+							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_with_tax()),0.0001,'total',1)" />
 						</td>
 					</tr>
 				</table>
@@ -224,7 +226,7 @@
 								</b>
 							</td>
 							<td class="pos-right-align">
-								<t t-esc="widget.format_currency(line.amount,0.0001,'total',1)" />
+								<t t-esc="widget.format_currency_no_symbol(line.amount,0.0001,'total',1)" />
 							</td>
 						</tr>
 					</table>
@@ -234,7 +236,7 @@
 								<b>Vuelto:</b>
 							</td>
 							<td class="pos-right-align">
-								<t t-esc="widget.format_currency(receipt.change,0.00001,'total',1)" />
+								<t t-esc="widget.format_currency_no_symbol(receipt.change,0.00001,'total',1)" />
 							</td>
 						</tr>
 					</table>
