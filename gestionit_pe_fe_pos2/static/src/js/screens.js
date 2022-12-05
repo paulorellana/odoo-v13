@@ -6,106 +6,117 @@ odoo.define('gestionit_pe_fe_pos.screens', function(require){
     var core = require('web.core');
     var rpc = require("web.rpc");
     var QWeb = core.qweb;
-    var pos_order_mgmt = require('pos_order_mgmt.widgets')
-    
+    var Qweb = core.qweb;
     var exports = {}
 
-    screens.PaymentScreenWidget.include({
-        click_back: function(){
-            var order = this.pos.get_order()
-            if(order.refund_order_id){
-                this.gui.show_screen("screen_credit_note")
-            }else{
-                this.gui.show_screen('products');
-            }
+    // var LineReturnPopup = PopupWidget.extend({
+    //     template: 'LineReturnPopup',
+    //     renderElement: function () {
+    //         var self = this;
+    //         this._super();
+    //         if (this.options.order_lines) {
+    //             var order_lines = {};
+    //             this.options.order_lines.forEach(function (item) {
+    //                 order_lines[item.id] = item
+    //             })
+    //         }
+    //         this.$('.btn-return').click(function () {
+    //             var orderLine = order_lines[$(this).closest('tr').data("line-id")];
+    //             var order = self.pos.get_order();
+    //             var product = self.pos.db.get_product_by_id(orderLine.product_id[0]);
+    //             order.add_product_with_lot(product, self.options.pack_lots[orderLine.pack_lot_ids[0]].display_name, true)
+    //             var selected_orderline = order.get_selected_orderline();
+    //             selected_orderline.price_manually_set = true;
+    //             selected_orderline.set_unit_price(-orderLine.price_subtotal_incl)
+    //             self.gui.show_screen('products');
+    //         })
+    //     }
+    // });
+    // gui.define_popup({name: 'line_return_popup', widget: LineReturnPopup});
+
+    var OrderListScreenWidget = screens.ScreenWidget.extend({
+        template: 'OrderListScreenWidget',
+        events: {
+            'click .back': function () {
+                this.gui.back();
+            },
+            'keydown input#searchbox': "search_orders",
+            "click .order-list-contents>tr": "select_order"
         },
-        click_set_customer: function(){
-            var order = this.pos.get_order()
-            if(order.refund_order_id){
-                this.pos.gui.show_popup('error', {
-                    'title': "Error",
-                    'body': "No puedes cambiar el cliente para la emisión de una nota de crédito.",
-                });
-            }else{
-                this.gui.show_screen('clientlist');
-            }
-        },
-        renderElement:function(){
+        show: function () {
             this._super();
-            var self = this
-            var order = this.pos.get_order()
-            if(order.refund_order_id){
-                $(self.$el).find(".payment-numpad").css("display","none")
-                $(self.$el).find(".paymentmethods-container").css("display","none")
-                
-            }
-        }
-    })
-    
-    pos_order_mgmt.OrderListScreenWidget.include({
-        _prepare_order_from_order_data:function(order_data, action) {
-            var order = this._super(order_data, action);
-            // console.log(order)
-            if(order_data.to_invoice == true){
-                order.set_invoice_journal_id(order_data.invoice_journal_id);
-                order.set_invoice_type_code_id(order_data.invoice_type_code_id);
-                order.set_sequence_number(order_data.sequence_number);
-                order.set_number(order_data.number);
-                order.set_digest_value(order_data.digest_value);
-                order.set_refund_invoice(order_data.refund_invoice);
-                order.set_credit_note_type(order_data.credit_note_type_name)
-            }
-            return order
+            this.$('.order-list-contents').empty();
+            this.$('input#searchbox').focus();
         },
-        render_list: function() {
+        search_orders: function (e) {
             var self = this;
-            this._super();
-            this.$(".order-list-credit-note").click(function(event) {
-                self.action_credit_note(event);
+            var textSearch = "";
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code === 13) {
+                textSearch = e.currentTarget.value;
+            } else {
+                return true;
+            }
+            rpc.query({
+                model: 'pos.order',
+                method: 'search_read',
+                domain: ['|', ['partner_id.name', 'ilike', textSearch], '|', ['name', 'ilike', textSearch], ['lines.pack_lot_ids.lot_name', 'ilike', textSearch]],
+                fields: ['name', 'partner_id', 'date_order'],
+                order: 'date_order desc',
+                limit: 30
+            }).then(function (res) {
+                // alert('Hola Luis');
+                // alert(res);
+                self.$el.find('.order-list-contents').html(Qweb.render('OrderListLines', {orders: res}));
             });
         },
-        action_credit_note:function(event){
-            var dataset = event.currentTarget.dataset;
-            console.log(dataset)
-            var orderId = parseInt(dataset.orderId, 10)
-            var partnerId = dataset.partnerId != ''?dataset.partnerId.split(","):undefined
-            var moveId = dataset.moveId != ''?dataset.moveId.split(","):undefined
-            if(moveId != undefined && partnerId != undefined){
-                this.gui.show_popup("create_credit_note_modal",{order_id:orderId,
-                                                                invoice_id:moveId,
-                                                                partner_id:partnerId},true)
-            }else{
-                alert("Solo se puede emitir Notas de crédito a facturas o boletas")
-            }
+        select_order: function (e) {
+            var self = this;
+            var order_id = e.currentTarget.dataset.id;
+            rpc.query({
+                model: 'pos.order.line',
+                method: 'search_read',
+                domain: [['order_id.id', '=', order_id]],
+                fields: ['product_id', 'pack_lot_ids', 'qty', 'price_subtotal_incl'],
+            }).then(function (res) {
+                var order_lines = res;
+                var pack_lot_ids = [];
+                res.forEach(function (item) {
+                    item.pack_lot_ids.forEach(function (i) {
+                        pack_lot_ids.push(i);
+                    });
+                });
+                rpc.query({
+                    model: 'pos.pack.operation.lot',
+                    method: 'read',
+                    args: [pack_lot_ids, ['display_name']]
+                }).then(function (res) {
+                    var pack_lots = {};
+                    res.forEach(function (item) {
+                        pack_lots[item.id] = item;
+                    });
+                    self.pos.gui.show_popup('line_return_popup', {
+                        order_lines: order_lines,
+                        pack_lots: pack_lots,
+                    });
+                })
+            });
+        }
+    });
+
+    gui.define_screen({name: 'orderlist', widget: OrderListScreenWidget});
+
+    var ShowOrderList = screens.ActionButtonWidget.extend({
+        template: 'ShowOrderList',
+        button_click: function () {
+            this.gui.show_screen('orderlist');
         },
-        action_print: function(order_data, order) {
-            // We store temporarily the current order so we can safely compute
-            // taxes based on fiscal position
-            this.pos.current_order = this.pos.get_order();
+    });
 
-            this.pos.set_order(order);
-
-            this.pos.reloaded_order = order;
-            var skip_screen_state = this.pos.config.iface_print_skip_screen;
-            // Disable temporarily skip screen if set
-            this.pos.config.iface_print_skip_screen = false;
-            this.gui.show_screen("receipt");
-            this.pos.reloaded_order = false;
-            // Set skip screen to whatever previous state
-            this.pos.config.iface_print_skip_screen = skip_screen_state;
-
-            // If it's invoiced, we also print the invoice
-            // if (order_data.to_invoice) {
-            //     this.pos.chrome.do_action("point_of_sale.pos_invoice_report", {
-            //         additional_context: {active_ids: [order_data.id]},
-            //     });
-            // }
-
-            // Destroy the order so it's removed from localStorage
-            // Otherwise it will stay there and reappear on browser refresh
-            order.destroy();
-        },
-    })
+    screens.define_action_button({
+        'name': 'showorderlist',
+        'widget': ShowOrderList,
+    });
 
     screens.PaymentScreenWidget.include({
         validate_order: function(force_validation) {
@@ -428,22 +439,14 @@ odoo.define('gestionit_pe_fe_pos.screens', function(require){
         }
     })
 
+    screens.ReceiptScreenWidget.include({
+        get_receipt_render_env:function(){
+            var res = this._super()
+            // console.log(res)
+            return res
+        }
+    })
+    exports.screens = screens
 
-    // screens.OrderWidget.include({
-    //     render_orderline: function(orderline){
-    //         var res = this._super(orderline);
-    //         var btn = $("<button>Gratuito</button>")
-    //         btn.on('click',()=>{
-    //             console.log(orderline)
-    //         })
-    //         btn.appendTo(res)
-    //         console.log("render_orderline")
-    //         console.log(res)
-    //         return res
-    //     }
-    // })
-
-    exports.screens = screens;
-    exports.pos_order_mgmt = pos_order_mgmt;
-    return exports;
+    return screens;
 })

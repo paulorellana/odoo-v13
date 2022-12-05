@@ -21,7 +21,7 @@
                             <div class="row mt16">
                                 <label string="Series disponibles" for="invoice_journal_ids" class="col-lg-3 o_light_label"/>
                                 <field name="invoice_journal_ids" 
-                                        domain="[('company_id', '=', company_id), ('invoice_type_code_id', 'in', ['01','03','07']),('type','=','sale')]" 
+                                        domain="[('company_id', '=', company_id), ('invoice_type_code_id', 'in', ['01','03']),('type','=','sale')]" 
                                         attrs="{'required': [('module_account_invoicing', '=', True)]}" 
                                         context="{'default_company_id': company_id, 'default_type': 'sale'}"
                                         widget="many2many_tags"
@@ -31,12 +31,13 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-12 col-lg-6 o_setting_box">
                     <div class="o_setting_left_pane">
                         <field name="required_journal"/>
                     </div>
                     <div class="o_setting_right_pane">
-                        <label for="required_journal" string="Elegir Factura o Boleta obligatoriamente"/>
+                        <label for="required_journal" string="Diario obligatorio"/>
                         <div class="text-muted">
                             Evita generar ventas sin haber seleccionado un diario para facturación.
                         </div>
@@ -75,16 +76,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6 o_setting_box" id="partner_anonymous_id">
-                    <div class="o_setting_right_pane">
-                        <label for="anonymous_id" string="Cliente anónimos"/>
-                        <div class="text-muted">
-                            Se establece un cliente anómimo o cliente varios por defecto para emisión de boletas y tickets
-                        </div>
-                        <field name="anonymous_id" Toptions="{'no_create':True,'no_edit':True,'no_quick_create':True}" required="1"/>
-                    </div>
-                </div>
-                
             </xpath>
         </field>
     </record>
