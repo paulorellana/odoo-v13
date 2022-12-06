@@ -121,13 +121,7 @@
 				<br />
 
 				<table class='receipt-orderlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-					<colgroup>
-						<col width='15%' />
-						<col width='55%' />
-						<col width='15%' />
-						<col width='15%' />
-					</colgroup>
-
+					
 					<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<th>
 							<b>Cant.</b>
@@ -136,7 +130,7 @@
 							<b>Descripción</b>
 						</th>
 						<th>
-							<b>P.U.</b>cd 
+							<b>P.U.</b>
 						</th>
 						<th>
 							<b>Importe</b>
