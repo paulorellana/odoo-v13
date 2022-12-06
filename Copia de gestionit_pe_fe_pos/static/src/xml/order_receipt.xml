@@ -120,13 +120,7 @@
 				</div>
 				<br />
 
-				<table class='receipt-orderlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-					<colgroup>
-						<col width='15%' />
-						<col width='55%' />
-						<col width='15%' />
-						<col width='15%' />
-					</colgroup>
+				<table class='receipt-orderlines' style="border-top: 1px black dotted;font-size:12px">
 
 					<tr>
 						<th>
@@ -167,18 +161,18 @@
 							</td>
 							<td class="pos-center-align">
 								<span>
-									<t t-esc="widget.format_currency_no_symbol(orderline.get_unit_price(),'Price POS')" />
+									<t t-esc="widget.format_currency(orderline.get_unit_price(),'Price POS')" />
 								</span>
 							</td>
 							<td class="pos-right-align">
 								<span>	
-									<t t-esc="widget.format_currency_no_symbol(orderline.get_price_with_tax(),'Price POS')" />
+									<t t-esc="widget.format_currency(orderline.get_price_with_tax(),'Price POS')" />
 								</span>								
 							</td>
 						</tr>
 						<tr t-if="widget.pos.config.receipt_show_default_code">
 							<td></td>
-							<td colspan="2" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+							<td colspan="2" style="padding:8px 0px;font-size: 14px;">
 								<span class="pt-2">
 									<t t-esc="orderline.get_product().display_name" />
 									<t t-if="orderline.has_product_lot">
@@ -218,7 +212,7 @@
 							<b>IGV 18%</b>
 						</td>
 						<td class="pos-right-align">
-							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_tax()),'Price POS')" />
+							<t t-esc="widget.format_currency(Math.abs(order.get_total_tax()),'Price POS')" />
 						</td>
 					</tr>
 
@@ -227,7 +221,7 @@
 							<b>IMPORTE TOTAL:</b>
 						</td>
 						<td class="pos-right-align">
-							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_with_tax()),'Price POS')" />
+							<t t-esc="widget.format_currency(Math.abs(order.get_total_with_tax()),'Price POS')" />
 						</td>
 					</tr>
 				</table>
@@ -243,7 +237,7 @@
 								</b>
 							</td>
 							<td class="pos-right-align">
-								<t t-esc="widget.format_currency_no_symbol(line.amount,'Price POS')" />
+								<t t-esc="widget.format_currency(line.amount,'Price POS')" />
 							</td>
 						</tr>
 					</table>
@@ -253,7 +247,7 @@
 								<b>Vuelto:</b>
 							</td>
 							<td class="pos-right-align">
-								<t t-esc="widget.format_currency_no_symbol(receipt.change,'Price POS')" />
+								<t t-esc="widget.format_currency(receipt.change,'Price POS')" />
 							</td>
 						</tr>
 					</table>
