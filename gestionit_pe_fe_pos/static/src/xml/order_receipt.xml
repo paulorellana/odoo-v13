@@ -137,12 +137,12 @@
 						</th>
 					</tr>
 					<t t-foreach="orderlines" t-as="orderline">
-						<tr style="border-top: 1px black dotted; font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+						<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 							<td class="pos-left-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 								<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />
 							</td>
 
-							<td>
+							<td style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 								<t t-if="widget.pos.config.receipt_show_default_code">
 									<t t-if="orderline.get_product().default_code">
 										<t t-esc="orderline.get_product().default_code" />
