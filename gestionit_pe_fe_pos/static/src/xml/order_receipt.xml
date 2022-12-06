@@ -135,10 +135,10 @@
 						<th>
 							<b>Descripción</b>
 						</th>
-						<th style="min-width:60px">
+						<th>
 							<b>P.U.</b>
 						</th>
-						<th style="min-width:60px">
+						<th>
 							<b>Importe</b>
 						</th>
 					</tr>
