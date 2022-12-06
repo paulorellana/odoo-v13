@@ -139,7 +139,7 @@
 					</tr>
 					<t t-foreach="orderlines" t-as="orderline">
 						<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-							<td class="pos-center-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+							<td class="pos-left-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 								<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />-->
 								<t t-esc="Math.abs(orderline.get_quantity())" />
 							</td>
@@ -175,7 +175,7 @@
 						<tr t-if="widget.pos.config.receipt_show_default_code">
 							<td></td>
 							<td colspan="2" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-								<span class="pt-2">
+								<span>
 									<t t-esc="orderline.get_product().display_name" />
 									<t t-if="orderline.has_product_lot">
 										<t t-foreach="orderline.pack_lot_lines.models" t-as="line">
@@ -192,10 +192,10 @@
 				</table>
 
 				<br />
-				<table class='receipt-total' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+				<table  style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 					<tr>
-						<td>
-							<b>SUBTOTAL</b>
+						<td >
+							<b style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">SUBTOTAL</b>
 						</td>
 						<td class="pos-right-align">
 							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_without_tax()),'Price POS')" />
