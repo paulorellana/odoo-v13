@@ -120,7 +120,8 @@
 				</div>
 				<br />
 
-				<table class='receipt-orderlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+		<!--		<table class='receipt-orderlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;"> -->
+				<table  style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 					
 					<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<th>
@@ -138,8 +139,9 @@
 					</tr>
 					<t t-foreach="orderlines" t-as="orderline">
 						<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-							<td class="pos-left-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-								<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />
+							<td class="pos-center-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+								<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />-->
+								<t t-esc="Math.abs(orderline.get_quantity())" />
 							</td>
 
 							<td style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
@@ -184,13 +186,13 @@
 							</td>
 						</tr>
 					</t>
-					<tr style="border-top: 1px black dotted; font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+					<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<td colspan="2">Total Items: <t t-esc="order.total_items()"/></td>
 					</tr>
 				</table>
 
 				<br />
-				<table class='receipt-total' style="width:100%">
+				<table class='receipt-total' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 					<tr>
 						<td>
 							<b>SUBTOTAL</b>
@@ -229,7 +231,7 @@
 				<br />
 
 				<div id="paymentlines" class='after-footer'>
-					<table class='receipt-paymentlines' style="width:100%">
+					<table class='receipt-paymentlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<tr t-foreach="receipt.paymentlines" t-as="line">
 							<td>
 								<b>
@@ -241,7 +243,7 @@
 							</td>
 						</tr>
 					</table>
-					<table class='receipt-change' style="width:100%" t-if="receipt.change &gt; 0">
+					<table class='receipt-change' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;" t-if="receipt.change &gt; 0">
 						<tr>
 							<td>
 								<b>Vuelto:</b>
