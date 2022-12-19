@@ -14,7 +14,7 @@
     -->
 
     <record model="ir.ui.view" id="por_utilidad_view">
-      <field name="name">Porcentaje utilidad</field>
+      <field name="name">add fields form product</field>
       <field name="model">product.template</field>
       <field name="inherit_id" ref="product.product_template_only_form_view"/>
       <field name="arch" type="xml">
@@ -38,19 +38,19 @@
          </field>
       </field>
     </record>
-    
-    <record model="ir.ui.view" id="code2">
-      <field name="name">code2</field>
-      <field name="model">product.uom</field>
-      <field name="inherit_id" ref="product.product_uom_form_view"/>
+  -->
+    <record model="ir.ui.view" id="marca">
+      <field name="name">list product</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.template.product.tree"/>
       <field name="arch" type="xml">
-         <field name="uom_type" position="after">
-           <field name="code2"/>
+         <field name="name" position="after">
+           <field name="marca"/>
          </field>
       </field>
     </record>
 
-
+<!--
      <record model="ir.ui.view" id="mrp_sale_order">
       <field name="name">mrp_sale_order</field>
       <field name="model">mrp.production</field>
