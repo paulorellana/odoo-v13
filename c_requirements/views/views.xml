@@ -42,7 +42,7 @@
     <record model="ir.ui.view" id="marca">
       <field name="name">list product</field>
       <field name="model">product.template</field>
-      <field name="inherit_id" ref="product.template.product.tree"/>
+      <field name="inherit_id" ref="product.product_template_tree_view"/>
       <field name="arch" type="xml">
          <field name="name" position="after">
            <field name="marca"/>
