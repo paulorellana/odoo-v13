@@ -5,9 +5,9 @@ from odoo import models, fields, api
 class product(models.Model):
 	_inherit = 'product.template'
 	n_porc_utilidad = fields.Float(string="%margen:")
-	marca = fields.Char(string="Marca:")
+	marca = fields.Char(string="Marca")
 	descripcion = fields.Text(string="")
-	cod_interno = fields.Text(string="Código interno:")
+	cod_interno = fields.Text(string="Código interno")
 
 	@api.onchange('n_porc_utilidad')
 	def _n_porc_utilidad(self):
@@ -16,6 +16,12 @@ class product(models.Model):
 class partner(models.Model):
 	_inherit = 'res.partner'
 	abc = fields.Selection([('a','A'),('b','B'),('c','C')],string="Clasificación ABC:")
+
+class SaleOrderLine(models.Model):
+
+    _inherit = 'sale.order.line'
+    marca = fields.Char(related='product_id.marca', readonly=True)
+
 
 #class company(models.Model):
 #	_inherit = 'res.company'
