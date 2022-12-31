@@ -130,14 +130,18 @@
 					</colgroup>
 					<tr style="border-top: 1px black dotted;">
 						
-						<th><div style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;"><b>CAN.</b></div></th>
+						<th>
+							<div class="pos-center-align">
+								<sapn>Can.</span>
+							</div>
+						</th>
 						<th><b>DESCRIPCION</b></th>
 						<th><b>P.U.</b></th>
 						<th><b>IMPORTE</b></th>
 					</tr>
 					<t t-foreach="orderlines" t-as="orderline">
 						<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-							<td class="pos-left-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+							<exottd class="pos-left-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 								<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />-->
 								<t t-esc="Math.abs(orderline.get_quantity())" />
 							</td>
