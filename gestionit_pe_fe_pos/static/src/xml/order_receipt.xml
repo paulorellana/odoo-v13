@@ -125,16 +125,16 @@
 					
 					<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<th>
-							<b>Cant.</b>
+							Cant.
 						</th>
 						<th>
-							<b>Descripción</b>
+							Descripción
 						</th>
 						<th>
-							<b>P.U.</b>
+							P.U.
 						</th>
 						<th>
-							<b>Importe</b>
+							Importe
 						</th>
 					</tr>
 					<t t-foreach="orderlines" t-as="orderline">
