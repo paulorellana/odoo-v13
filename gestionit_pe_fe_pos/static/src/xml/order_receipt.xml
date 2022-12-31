@@ -123,10 +123,10 @@
 		<!--		<table class='receipt-orderlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;"> -->
 				<table  style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 					<colgroup>
-						<col width='15%' />
-						<col width='55%' />
-						<col width='15%' />
-						<col width='15%' />
+						<col width='15%'/>
+						<col width='55%'/>
+						<col width='15%'/>
+						<col width='15%'/>
 					</colgroup>
 					<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<th>
