@@ -135,18 +135,30 @@
 								<span>Can.</span>
 							</div>
 						</th>
-						<th><span>Descripción</span></th>
-						<th><span>P.u.</span></th>
-						<th><span>Importe</span></th>
+						<th>
+							<div class="pos-center-align">
+								<span>Descripción</span>
+							</div>
+						</th>
+						<th>
+							<div class="pos-center-align">
+								<span>P.u.</span>
+							</div>
+						</th>
+						<th>
+							<div class="pos-center-align">
+								<span>Importe</span>
+							</div>
+						</th>
 					</tr>
 					<t t-foreach="orderlines" t-as="orderline">
 						<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-							<td class="pos-left-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+							<td class="pos-center-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 								<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />-->
 								<t t-esc="Math.abs(orderline.get_quantity())" />
 							</td>
 
-							<td style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+							<td class="pos-center-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 								<t t-if="widget.pos.config.receipt_show_default_code">
 									<t t-if="orderline.get_product().default_code">
 										<t t-esc="orderline.get_product().default_code" />
