@@ -188,7 +188,7 @@
 						</tr>
 						<tr t-if="widget.pos.config.receipt_show_default_code">
 							<td></td>
-							<td colspan="2" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+							<td class="pos-center-align" colspan="2" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 								<span>
 									<t t-esc="orderline.get_product().display_name" />
 									<t t-if="orderline.has_product_lot">
