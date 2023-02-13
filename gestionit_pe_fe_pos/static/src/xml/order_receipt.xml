@@ -128,25 +128,24 @@
 						<col width='15%'/>
 						<col width='15%'/>
 					</colgroup>
-					<tr style="border-top: 1px black dotted;">
-						
+					<tr style="border-top: 1px black dotted;font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<th>
-							<div class="pos-center-align">
+							<div>
 								<span>Can.</span>
 							</div>
 						</th>
 						<th>
-							<div class="pos-center-align">
+							<div>
 								<span>Descripción</span>
 							</div>
 						</th>
 						<th>
-							<div class="pos-center-align">
+							<div>
 								<span>P.u.</span>
 							</div>
 						</th>
 						<th>
-							<div class="pos-center-align">
+							<div>
 								<span>Importe</span>
 							</div>
 						</th>
