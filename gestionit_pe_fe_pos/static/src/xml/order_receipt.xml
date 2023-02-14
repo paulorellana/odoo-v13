@@ -168,9 +168,9 @@
 								</t>
 								<t t-if="orderline.get_discount() > 0">
 									<div class="pos-disc-font">
-										Dsct.
-								''		<t t-esc="orderline.get_discount()" /
-										%
+									Dsct.
+									<t t-esc="orderline.get_discount()" />
+									%
 									</div>
 								</t>
 							</td>
