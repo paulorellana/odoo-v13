@@ -112,8 +112,8 @@
 						<t t-esc="order.get_credit_note_comment()" />
 					</span>
 					<br />
-					<span>
-						<b>Tipo de nota de crédito: </b>
+					<span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+  						<b>Tipo de nota de crédito: </b>
 						<t t-esc="order.get_credit_note_type_name()" />
 					</span>
 					<br />
@@ -121,7 +121,7 @@
 				<br />
 
 		<!--		<table class='receipt-orderlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;"> -->
-				<table class='receipt-orderlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+				<table style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 					<colgroup>
 						<col width='15%'/>
 						<col width='55%'/>
@@ -131,12 +131,12 @@
 					<tr style="border-top: 1px black dotted;font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 						<th>
 							<div>
-								<span>Can.</span>
+								<b>Cant</b>
 							</div>
 						</th>
 						<th>
 							<div>
-								<span>Descripción</span>
+								<span>Descripción.</span>
 							</div>
 						</th>
 						<th>
@@ -150,9 +150,9 @@
 							</div>
 						</th>
 					</tr>
-					<t t-foreach="orderlines" t-as="orderline">
+					<t t-foreach="orderlines" t-as="orderline">,l
 						<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-							<td class="pos-center-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+							<td >
 								<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />-->
 								<t t-esc="Math.abs(orderline.get_quantity())" />
 							</td>
@@ -169,7 +169,7 @@
 								<t t-if="orderline.get_discount() > 0">
 									<div class="pos-disc-font">
 										Dsct.
-										<t t-esc="orderline.get_discount()" />
+								''		<t t-esc="orderline.get_discount()" /
 										%
 									</div>
 								</t>
