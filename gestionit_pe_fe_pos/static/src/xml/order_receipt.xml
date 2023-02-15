@@ -150,14 +150,14 @@
 							</div>
 						</th>
 					</tr>
-					<t t-foreach="orderlines" t-as="orderline">,l
+					<t t-foreach="orderlines" t-as="orderline">
 						<tr>
 							<td >
 								<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />-->	
 								<t t-esc="Math.abs(orderline.get_quantity())" />
 							</td>
 
-							<td class="pos-center-align">
+							<td>
 								<t t-if="widget.pos.config.receipt_show_default_code">
 									<t t-if="orderline.get_product().default_code">
 										<t t-esc="orderline.get_product().default_code" />
@@ -200,16 +200,16 @@
 							</td>
 						</tr>
 					</t>
-					<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+					<tr>
 						<td colspan="2">Total Items   : <t t-esc="order.total_items()"/></td>
 					</tr>
 				</table>
 
 				<br />
-				<table  style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
-					<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+				<table  style="font-family: 'Barlow Condensed', sans-serif; font-size: 10px;">
+					<tr>
 						<td >
-							<b>SUBTOTAL    :</b>
+							<b>SUBTOTAL    : </b>
 						</td>
 						<td class="pos-right-align">
 							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_without_tax()),'Price POS')" />
@@ -217,7 +217,7 @@
 					</tr>
 					<tr t-if="order.get_total_discount() > 0">
 						<td>
-							<b>Descuento    :</b>
+							<b>Descuento    : </b>
 						</td>
 						<td class="pos-right-align">
 							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_discount()),'Discount')" />
@@ -225,7 +225,7 @@
 					</tr>
 					<tr>
 						<td>
-							<b>IGV 18%    :</b>
+							<b>IGV 18%      : </b>
 						</td>
 						<td class="pos-right-align">
 							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_tax()),'Price POS')" />
@@ -234,7 +234,7 @@
 
 					<tr >
 						<td>
-							<b>IMPORTE TOTAL :</b>
+							<b>IMPORTE TOTAL : </b>
 						</td>
 						<td class="pos-right-align">
 							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_with_tax()),'Price POS')" />
@@ -245,22 +245,23 @@
 				<br />
 
 				<div id="paymentlines" class='after-footer'>
-					<table class='receipt-paymentlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+					<table class='receipt-paymentlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 10px;">
 						<tr t-foreach="receipt.paymentlines" t-as="line">
 							<td>
 								<b>
 									<t t-esc="line.payment_method" />
 								</b>
+								<b> </b>
 							</td>
 							<td class="pos-right-align">
 								<t t-esc="widget.format_currency_no_symbol(line.amount,'Price POS')" />
 							</td>
 						</tr>
 					</table>
-					<table class='receipt-change' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;" t-if="receipt.change &gt; 0">
+					<table class='receipt-change' style="font-family: 'Barlow Condensed', sans-serif; font-size: 10px;" t-if="receipt.change &gt; 0">
 						<tr>
 							<td>
-								<b>Vuelto   :</b>
+								<b>Vuelto    : </b>
 							</td>
 							<td class="pos-right-align">
 								<t t-esc="widget.format_currency_no_symbol(receipt.change,'Price POS')" />
@@ -270,7 +271,7 @@
 				</div>
 
 				<div class="receipt-user">
-					<b>Usuario :</b>
+					<b>Usuario : </b>
 					<t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name" />
 					<!-- <t t-esc='receipt.qr_string' /> -->
 					<br />
