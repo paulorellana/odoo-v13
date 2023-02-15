@@ -128,10 +128,10 @@
 						<col width='15%'/>
 						<col width='15%'/>
 					</colgroup>
-					<tr style="border-top: 1px black dotted;font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+					<tr>
 						<th>
 							<div>
-								<b>Cant</b>
+								<span>Cant</span>
 							</div>
 						</th>
 						<th>
@@ -154,17 +154,20 @@
 						<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
 							<td >
 								<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />-->
+								
 								<t t-esc="Math.abs(orderline.get_quantity())" />
 							</td>
 
-							<td class="pos-center-align" style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+							<td>
 								<t t-if="widget.pos.config.receipt_show_default_code">
 									<t t-if="orderline.get_product().default_code">
 										<t t-esc="orderline.get_product().default_code" />
 									</t>
 								</t>
-								<t t-else="">
-									<t t-esc="orderline.get_product().display_name"/>
+								<t t-else="">   
+									<span style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">								
+										<t t-esc="orderline.get_product().display_name"/>
+									</span>
 								</t>
 								<t t-if="orderline.get_discount() > 0">
 									<div class="pos-disc-font">
@@ -174,6 +177,7 @@
 									</div>
 								</t>
 							</td>
+					
 							<td class="pos-center-align">
 								<span>
 									<t t-esc="widget.format_currency_no_symbol(orderline.get_unit_price(),'Price POS')" />
