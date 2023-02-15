@@ -136,11 +136,11 @@
 						</th>
 						<th>
 							<div>
-								<span>Descripción.</span>
+								<span>Descripción</span>
 							</div>
 						</th>
 						<th>
-							<div>
+							<div class="pos-center-align">
 								<span>P.u.</span>
 							</div>
 						</th>
@@ -251,7 +251,7 @@
 								<b>
 									<t t-esc="line.payment_method" />
 								</b>
-								<b> </b>
+								<b> : </b>
 							</td>
 							<td class="pos-right-align">
 								<t t-esc="widget.format_currency_no_symbol(line.amount,'Price POS')" />
