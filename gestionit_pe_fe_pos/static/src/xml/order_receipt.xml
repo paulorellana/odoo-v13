@@ -217,7 +217,7 @@
 					</tr>
 					<tr t-if="order.get_total_discount() > 0">
 						<td>
-							<b>Descuento    : </b>
+							<b>Descuento	: </b>
 						</td>
 						<td class="pos-right-align">
 							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_discount()),'Discount')" />
@@ -225,7 +225,7 @@
 					</tr>
 					<tr>
 						<td>
-							<b>IGV 18%      : </b>
+							<b>IGV 18%		: </b>
 						</td>
 						<td class="pos-right-align">
 							<t t-esc="widget.format_currency_no_symbol(Math.abs(order.get_total_tax()),'Price POS')" />
@@ -251,7 +251,7 @@
 								<b>
 									<t t-esc="line.payment_method" />
 								</b>
-								<b> : </b>
+								<b> :  </b>
 							</td>
 							<td class="pos-right-align">
 								<t t-esc="widget.format_currency_no_symbol(line.amount,'Price POS')" />
