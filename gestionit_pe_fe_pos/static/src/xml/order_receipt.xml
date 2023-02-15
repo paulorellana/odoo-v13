@@ -121,7 +121,7 @@
 				<br />
 
 		<!--		<table class='receipt-orderlines' style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;"> -->
-				<table style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+				<table style="font-family: 'Barlow Condensed', sans-serif; font-size: 10px;">
 					<colgroup>
 						<col width='15%'/>
 						<col width='55%'/>
@@ -131,7 +131,7 @@
 					<tr>
 						<th>
 							<div>
-								<span>Cant</span>
+								<span>Can.</span>
 							</div>
 						</th>
 						<th>
@@ -151,23 +151,20 @@
 						</th>
 					</tr>
 					<t t-foreach="orderlines" t-as="orderline">,l
-						<tr style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">
+						<tr>
 							<td >
-								<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />-->
-								
+								<!--<t t-esc="widget.format_currency_no_symbol(Math.abs(orderline.get_quantity()),'Quantity POS')" />-->	
 								<t t-esc="Math.abs(orderline.get_quantity())" />
 							</td>
 
-							<td>
+							<td class="pos-center-align">
 								<t t-if="widget.pos.config.receipt_show_default_code">
 									<t t-if="orderline.get_product().default_code">
 										<t t-esc="orderline.get_product().default_code" />
 									</t>
 								</t>
 								<t t-else="">   
-									<span style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px;">								
 										<t t-esc="orderline.get_product().display_name"/>
-									</span>
 								</t>
 								<t t-if="orderline.get_discount() > 0">
 									<div class="pos-disc-font">
