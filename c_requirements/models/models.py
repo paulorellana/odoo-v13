@@ -22,6 +22,13 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
     marca = fields.Char(related='product_id.marca', readonly=True)
 
+class Crmlead(models.Model):
+
+    _inherit = 'crm.lead'
+    begin_date = fields.Date(string="Fecha de incio:")
+    finish_date = fields.Date(string="Fecha de finalización:")
+
+
 
 #class company(models.Model):
 #	_inherit = 'res.company'
