@@ -38,6 +38,17 @@
         </field>
       </field>
     </record>
+    <record model="ir.ui.view" id="projec_task_view">
+      <field name="name">add dates to project task</field>
+      <field name="model">crm.lead</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+        <field name="tag_ids" position="after">
+          <field name="begin_date"/>
+          <field name="finish_date"/>
+        </field>
+      </field>
+    </record>
 <!---
     <record model="ir.ui.view" id="id_logo2">
       <field name="name">Segundo logo</field>
