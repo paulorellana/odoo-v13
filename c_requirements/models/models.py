@@ -28,11 +28,11 @@ class Crmlead(models.Model):
     begin_date = fields.Date(string="Fecha de incio:")
     finish_date = fields.Date(string="Fecha de finalización:")
 
-class Proyecttask(models.Model):
+#class Proyecttask(models.Model):
 
-    _inherit = 'proyect.task'
-    begin_date = fields.Date(string="Fecha de incio:")
-    finish_date = fields.Date(string="Fecha de finalización:")
+#    _inherit = 'proyect.task'
+#    begin_date = fields.Date(string="Fecha de incio:")
+#    finish_date = fields.Date(string="Fecha de finalización:")
 
 
 #class company(models.Model):

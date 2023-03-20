@@ -38,6 +38,7 @@
         </field>
       </field>
     </record>
+<!---
     <record model="ir.ui.view" id="projec_task_view">
       <field name="name">add dates to project task</field>
       <field name="model">proyect.task</field>
@@ -49,7 +50,7 @@
         </field>
       </field>
     </record>
-<!---
+
     <record model="ir.ui.view" id="id_logo2">
       <field name="name">Segundo logo</field>
       <field name="model">res.company</field>
