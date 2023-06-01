@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<odoo>
+   <record id="avance_produccion_tree" model="ir.ui.view">
+      <field name="name">mrp_ap.avance.produccion.tree</field>
+      <field name="model">avance.produccion</field>
+      <field name="arch" type="xml">
+          <tree>
+              <field name="id_order_p"/>
+              <field name="peso"/>
+              <field name="partner_id"/>
+              <field name="product_id"/>
+              <field name="product_qty"/>
+          </tree>
+      </field>
+    </record>
+  
+    <record id="action_ap" model="ir.actions.act_window">
+      <field name="name">Avance de Produccion</field>
+      <field name="res_model">avance.produccion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--  parent="mrp.menu_mrp_manufacturing" -->
+      <menuitem id="menu_action_ap" parent="mrp.menu_mrp_manufacturing" name="Avance de produccion" sequence="26"
+                action="c_requirements_sp.action_ap"/>
+
+    <record model="ir.ui.view" id="new_fields">
+      <field name="name">New fields</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+         <field name="default_code" position="after">
+           <field name="structure"/>
+           <field name="meters" /> 
+         </field>
+        <notebook>
+           <page string="Datos del producto terminado">
+            <group>
+              <field name="ancho_final_manga"/>
+              <field name="gramaje"/>
+              <field name="peso_bobina"/>
+            </group>
+             <group string="Area de produccion extrusión">
+              <field name="gramaje_lineal"/>
+              <field name="ancho_manga"/>
+              <field name="num_bandas"/>
+              <field name="bobinas_por_bajada"/>
+            </group>
+          </page>
+           <page string="Formulacion Global">
+             <group>
+              <field name="fuelle_lateral"/>
+              <field name="perforaciones"/>
+              <field name="espesor"/>
+              <field name="tratamiento_corona"/>
+              <field name="radio_cabezal"/>
+              <field name="d_int_tuco"/>
+              <field name="microperforada"/>
+              <field name="sticker"/>
+              <field name="destino"/>
+            </group>
+          </page>
+        </notebook>      
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="mrp_new_fields">
+      <field name="name">mrp_new_fields</field>
+      <field name="model">mrp.production</field>
+      <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+      <field name="arch" type="xml">
+         <field name="origin" position="after">
+           <field name="_sale_order_id"/>
+         </field>
+         <field name="routing_id" position="after">
+           <field name="maquina_nro"/>
+           <field name="tiempo_prd"/>
+           <field name="refile"/>
+           <field name="merma"/>
+           <field name="total"/>
+         </field>
+      </field>
+    </record>
+</odoo>

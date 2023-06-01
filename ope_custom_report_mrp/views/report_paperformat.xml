@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--TODO: FACTURA-->
+        
+        <record id="paperformat_invoice" model="report.paperformat">
+            <field name="name">Factura Base</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">208</field>           <!--TODO: ALTURA DE LA PAGINA -->
+            <field name="page_width">242</field>            <!--TODO: ANCHO DE LA PAGINA -->
+            <field name="orientation">Portrait</field>      <!--TODO: PAGINA HORIZONTAL -->
+            <field name="margin_top">7</field>              <!--TODO: CABECERA DE LA PAGINA -->
+            <field name="margin_bottom">75</field>          <!--TODO: PIE DE PAGINA DE LA PAGINA -->
+            <field name="margin_left">5</field>            <!--TODO: ESPACIO A LA IZQUIERDA DE LA PAGINA -->
+            <field name="margin_right">5</field>           <!--TODO: ESPACIO A LA DERECHA DE LA PAGINA -->
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">5</field>
+            <field name="dpi">90</field>
+        </record>
+    </data>
+</odoo>

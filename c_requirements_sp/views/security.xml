@@ -1,0 +1,20 @@
+<odoo> 
+    <record id="model_access_crequirements" model="ir.model.access">
+        <field name="name">model.access.crequirements</field>
+        <field name="model_id" ref="c_requirements_sp.model_avance_produccion"/>
+        <field name="group_id" ref="mrp.group_mrp_manager"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>      
+    </record>
+    <record id="model_access_crequirements1" model="ir.model.access">
+        <field name="name">model.access.crequirements1</field>
+        <field name="model_id" ref="c_requirements_sp.model_avance_produccion"/>
+        <field name="group_id" ref="mrp.group_mrp_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>      
+    </record>
+</odoo>

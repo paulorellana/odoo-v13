@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="0">
+        <template id="mrp.report_mrporder">  
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o"> 
+                    <t t-call="web.external_layout">
+                        <div class="page " style="font-size:12px">
+                            <div class="text-center">
+                                <h3>ORDEN DE TRABAJO EXTRUSION N°: <span t-esc="o.name"/> </h3>
+                            </div>              
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">DATOS PRINCIPALES DE LA ORDEN</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="text-left" style="font-size:12px">
+                                                <div>
+                                                    <strong>Cliente :</strong>
+                                                    <span t-esc="o._sale_order_id.partner_id.name"/>
+                                                </div>
+                                                <div>
+                                                    <strong>Producto :</strong>
+                                                    <span t-esc="o.product_id.name"/>
+                                                </div>
+                                                <div>
+                                                    <strong>Estructura :</strong>
+                                                    <span t-field="o.product_id.structure"/>
+                                                </div>
+                                                <div>
+                                                    <strong>Metraje(metros) :</strong>
+                                                    <span t-field="o.product_id.meters"/>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>  
+                                            <div>
+                                                <strong>Cantidad :</strong>
+                                                <span t-esc="'{0:,.2f}'.format(o.product_qty)"/>
+                                                <span t-field="o.product_uom_id.name" groups="product.group_uom"/>
+                                            </div>
+                                            <div>
+                                                <strong>Pedido de Venta N° :</strong>
+                                                <span t-esc="o.origin"/> 
+                                            </div>       
+                                            <div>
+                                                <strong>Fecha :</strong>
+                                                <span t-esc="o._sale_order_id.date_order"/> 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+<!-- DATOS DEL PRODUCTO TERMINADO-->
+                            <table  class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">DATOS DEL PRODUCTO TERMINADO(lAMINA-MANGA)</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <strong>Ancho Final.mm :</strong>
+                                                <span t-esc="o.product_id.ancho_final_manga"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <strong>Gramaje (g/m2) :</strong>
+                                                <span t-esc="o.product_id.gramaje"/>                                        
+                                            </div>
+                                        </td>
+                                        <td>                                      
+                                            <div>
+                                                <strong>Peso de bobina(kg.) :</strong>
+                                                <span t-esc="o.product_id.peso_bobina"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+<!-- FORMULACION GLOBAL DE MATERIALES-->
+                            <table  class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">FORMULACION GLOBAL DE MATERIALES</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <strong>Ancho :</strong>
+                                                <span t-esc="o.product_id.ancho_final_manga"/>
+                                            </div>
+                                            <div>
+                                                <strong>Espesor :</strong>
+                                                <span t-esc="o.product_id.espesor"/>                                        
+                                            </div>
+                                            <div>
+                                                <strong>Diam.int.Tuco :</strong>
+                                                <span t-esc="o.product_id.d_int_tuco"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <strong>Fuelle lateral :</strong>
+                                                <span t-esc="o.product_id.fuelle_lateral"/>                                        
+                                            </div>
+                                             <div>
+                                                <strong>Tratamiento corona :</strong>
+                                                <span t-esc="o.product_id.tratamiento_corona"/>
+                                            </div>
+                                             <div>
+                                                <strong>Microperforada :</strong>
+                                                <span t-esc="o.product_id.microperforada"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <strong>Perforaciones :</strong>
+                                                <span t-esc="o.product_id.perforaciones"/>
+                                            </div>
+                                            <div>
+                                                <strong>Radio de Cabezal :</strong>
+                                                <span t-esc="o.product_id.radio_cabezal"/>
+                                            </div>
+                                            <div>
+                                                <strong>Sticker :</strong>
+                                                <span t-esc="o.product_id.sticker"/>
+                                            </div>
+                                            <div>
+                                                <strong>Destino :</strong>
+                                                <span t-esc="o.product_id.destino"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+<!-- ARRANQUE DE MAQUINA-->
+                            <table  class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ARRANQUE DE MAQUINA</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <strong>Maquina :</strong>
+                                                <span t-esc="o.maquina_nro"/>
+                                            </div>
+                                            <div>
+                                                <strong>Cantidad :</strong>
+                                                <span t-esc="o.product_qty"/>
+                                                <span> kg. </span>                                        
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <strong>Tiempo de produccion :</strong>
+                                                <span t-esc="o.tiempo_prd"/>                                        
+                                            </div>
+                                            <div>
+                                                <strong>Refile :</strong>
+                                                <span t-esc="o.refile"/>
+                                                <span> kg. </span>                                        
+                                            </div>
+                                        </td>
+                                        <td>                                      
+                                            <div>
+                                                <strong>. </strong>
+                                            </div>
+                                            <div>
+                                                <strong>Merma </strong>
+                                                <span t-esc="o.merma"/>
+                                                <span> kg. </span>
+                                            </div>
+                                        </td>
+                                         <td>                                  
+                                            <div>
+                                                <strong>. </strong>
+                                            </div>    
+                                            <div>
+                                                <strong>Total :</strong>
+                                                <span t-esc="o.total"/>
+                                                <span> kg. </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+<!-- MATERIALES-->
+                            <div class="text-lef" style="font-size:12px">
+                                <span>MATERIALES </span>
+                            </div>              
+
+                            <table  class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">% Composición</th>
+                                        <th scope="col">Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-if="o.move_raw_ids">
+                                        <tr t-foreach="o.move_raw_ids" t-as="line">
+                                            <td>
+                                                <span t-field="line.product_id"/>
+                                            </td>
+                                            <td>
+                                                <span> </span>
+                                            </td>
+                                            <td class="text-left">
+                                                <span t-field="line.product_uom_qty"/>
+                                                <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                                                <span>kg.</span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+<!-- OBSERVACION-->
+                            <table  class="table text-left">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">OBSERVACION</th>
+                                        <th scope="col">TOTAL MATERIALES</th>
+                                        <th scope="col">______________KG</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <strong>________________________________________________________________</strong>
+                                            </div>
+                                            <div>
+                                                
+                                                <br/>
+                                                
+                                                <strong>_________________________________________________________________</strong>
+                                            </div>
+                                            <div>
+                                                <br/>
+
+                                                <strong>________________________________________________________________</strong>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <strong>______________ </strong>
+                                                <strong>      V.B. </strong>
+                                            </div>
+                                        </td>
+                                        <td>                                      
+                                            <div>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <strong>______________ </strong>
+                                                <strong>      V.B. </strong>
+                                            </div>                                        
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+<!--                            
+                            <table  class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+-->
+                        </div>
+                    </t>             
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
