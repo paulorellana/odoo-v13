@@ -4,8 +4,11 @@
         <template id="mrp.report_mrporder">  
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o"> 
-                    <t t-call="web.external_layout">
+
+                    <t t-call="web.internal_layout">
+
                         <div class="page " style="font-size:12px">
+                         
                             <div class="text-center">
                                 <h3>ORDEN DE TRABAJO EXTRUSION N°: <span t-esc="o.name"/> </h3>
                             </div>              
@@ -83,6 +86,52 @@
                                             <div>
                                                 <strong>Peso de bobina(kg.) :</strong>
                                                 <span t-esc="o.product_id.peso_bobina"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+<!-- AREA DE PRODUCCION EXTRUSION-->
+
+                            <table  class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">AREA DE PRODUCCION EXTRUSION</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <strong>Cantidad a producir :</strong>
+                                                <span t-esc="'{0:,.2f}'.format(o.product_qty)"/>
+                                                <span t-field="o.product_uom_id.name" groups="product.group_uom"/>
+                                            </div>
+                                             <div>
+                                                <strong>Ancho de manga (mm) :</strong>
+                                                <span t-esc="o.product_id.ancho_manga"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <strong>Gramaje lineal (g/m) :</strong>
+                                                <span t-esc="o.product_id.gramaje_lineal"/>                                        
+                                            </div>
+                                            <div>
+                                                <strong>Nro. de Bandas :</strong>
+                                                <span t-esc="o.product_id.num_bandas"/>                                        
+                                            </div>
+                                        </td>
+                                        <td>     
+                                            <div>
+                                                <br/>
+                                            </div>                            
+                                            <div>
+                                                <strong>Bobinas por bajada :</strong>
+                                                <span t-esc="o.product_id.bobinas_por_bajada"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -314,7 +363,9 @@
                             </table>
 -->
                         </div>
-                    </t>             
+
+                    </t>
+           
                 </t>
             </t>
         </template>

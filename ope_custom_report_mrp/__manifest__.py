@@ -18,7 +18,7 @@ Formato de Reportes de produccion : odoo v13
     'data': [
         'views/report_mrporder.xml',
         'views/report_mrp.xml',
-      #  'views/views_report.xml',
+        'views/internal_layout.xml',
       #  'security/ir.model.access.csv'
 
     ],
