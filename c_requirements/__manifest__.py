@@ -25,7 +25,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
+        'views/corretaje.xml',
     ],
     # only loaded in demonstration mode
     'demo_xml': [],
