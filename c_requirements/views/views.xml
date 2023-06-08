@@ -1,6 +1,34 @@
 <odoo>
   <data>
   <!--
+    <record model="ir.ui.view" id="id_logo2">
+      <field name="name">Segundo logo</field>
+      <field name="model">res.company</field>
+      <field name="inherit_id" ref="base.view_company_form"/>
+      <field name="arch" type="xml">
+         <field name="report_header" position="after">
+           <field name="logo2"/>
+           <field name="tradename"/>
+         </field>
+      </field>
+    </record> 
+-->
+     <record model="ir.ui.view" id="data_product">
+      <field name="name">add fields form product</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <field name="sunat_code" position="after">
+          <field name="mz"/>
+          <field name="lte"/>
+          <field name="area"/>          
+        </field>
+        <field name="company_id" position="after">
+          <field name="estado"/>          
+        </field>
+      </field>
+    </record>
+
     <record model="ir.ui.view" id="abc_view">
       <field name="name">Categoria ABC</field>
       <field name="model">res.partner</field>
@@ -12,21 +40,6 @@
       </field>
     </record>
     
-
-    <record model="ir.ui.view" id="por_utilidad_view">
-      <field name="name">add fields form product</field>
-      <field name="model">product.template</field>
-      <field name="inherit_id" ref="product.product_template_only_form_view"/>
-      <field name="arch" type="xml">
-        <field name="default_code" position="after">
-          <field name="cod_interno"/>
-        </field>
-        <field name="sunat_code" position="after">
-          <field name="marca"/>
-        </field>
-      </field>
-    </record>
--->
     <record model="ir.ui.view" id="crm_lead_view">
       <field name="name">add dates to crm lead</field>
       <field name="model">crm.lead</field>
@@ -50,41 +63,6 @@
         </field>
       </field>
     </record>
-<!---
-    <record model="ir.ui.view" id="id_logo2">
-      <field name="name">Segundo logo</field>
-      <field name="model">res.company</field>
-      <field name="inherit_id" ref="base.view_company_form"/>
-      <field name="arch" type="xml">
-         <field name="report_header" position="after">
-           <field name="logo2"/>
-           <field name="tradename"/>
-         </field>
-      </field>
-    </record>
-  
-    <record model="ir.ui.view" id="marca">
-      <field name="name">list product</field>
-      <field name="model">product.template</field>
-      <field name="inherit_id" ref="product.product_template_tree_view"/>
-      <field name="arch" type="xml">
-         <field name="name" position="after">
-           <field name="marca"/>
-         </field>
-      </field>
-    </record>
 
-
-     <record model="ir.ui.view" id="mrp_sale_order">
-      <field name="name">mrp_sale_order</field>
-      <field name="model">mrp.production</field>
-      <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
-      <field name="arch" type="xml">
-         <field name="origin" position="after">
-           <field name="_sale_order_id"/>
-         </field>
-      </field>
-    </record>
--->
   </data>
 </odoo>

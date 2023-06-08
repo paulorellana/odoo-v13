@@ -8,6 +8,11 @@ class product(models.Model):
 	marca = fields.Char(string="Marca")
 	descripcion = fields.Text(string="")
 	cod_interno = fields.Text(string="Código interno")
+	mz = fields.Char(string="Manzana")
+	lte = fields.Char(string="Lote")
+	area = fields.Char(string="Area")
+	estado = fields.Selection([('Disponible','DISPONIBLE'),('Vendido','VENDIDO')],string="Estado")
+
 
 	@api.onchange('n_porc_utilidad')
 	def _n_porc_utilidad(self):
