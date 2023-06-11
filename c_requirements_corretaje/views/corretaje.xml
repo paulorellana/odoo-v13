@@ -13,5 +13,22 @@
         </field>   
       </field>
     </record>
+
+     <record model="ir.ui.view" id="abc_view">
+      <field name="name">Datos partner</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+      	 <field name="website" position="after">
+	         <field name="estado_civil"/>
+           <field name="function"/>
+           <field name="profesion"/>           
+	       </field>
+          <field name="industry_id" position="after">
+           <field name="num_contrato"/>           
+	       </field>
+      </field>
+    </record>
+
     </data>
 </odoo>
