@@ -24,6 +24,7 @@ class partner(models.Model):
 	estado_civil = fields.Char(string="Estado Civil")
 	profesion = fields.Char(string="Profesión")
 	abc = fields.Selection([('a','A'),('b','B'),('c','C')],string="Clasificación ABC")
+    
 
 
 class SaleOrderLine(models.Model):
