@@ -1,0 +1,44 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="payment_schedule_pr">
+      <field name="name">show payment schedule</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <notebook>
+          <page string="Cronograma de pagos">
+            <group>
+                <field name="partner_id"/>
+                <field name="num_contrato"/>
+                <field name="num_cuotas"/>
+            </group>
+            <field name='payment_schedule_id'>
+              <tree>
+                <field name="p_date"/>
+                <field name="p_amount"/>
+                <field name="p_invoice"/>
+                <field name="p_state"/>
+                <field name="p_obs"/>
+              </tree> 
+<!--FORM PARA FORMATEAR LA VISTA -->
+              <form>
+                <group>
+                  <field name="p_date"/>
+                  <field name="p_amount"/>
+                  <field name="p_invoice"/>
+                  <field name="p_state"/>
+                  <field name="p_obs"/>
+                </group>
+              </form>
+            </field>
+             <group>
+                <field name="num_cuotas_pendientes"/>
+                <field name="num_cuotas_pagadas"/>
+            </group>
+          </page>
+        </notebook>
+      </field>
+    </record>
+          
+  </data>
+</odoo>
