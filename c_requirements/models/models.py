@@ -9,8 +9,8 @@ class product(models.Model):
 	descripcion = fields.Text(string="")
 	cod_interno = fields.Text(string="Código interno")
 	mz = fields.Char(string="Manzana")
-	lte = fields.Char(string="Lote")
-	area = fields.Char(string="Area")
+	lte = fields.Float(string="Lote")
+	area = fields.Float(string="Area")
 	estado = fields.Selection([('Disponible','DISPONIBLE'),('Vendido','VENDIDO')],string="Estado")
 
 

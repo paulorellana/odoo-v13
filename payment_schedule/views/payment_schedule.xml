@@ -20,7 +20,7 @@
                 <field name="p_state"/>
                 <field name="p_obs"/>
               </tree> 
-<!--FORM PARA FORMATEAR LA VISTA -->
+<!--FORM PARA FORMATEAR LA VISTA QUE APARECE AL REGISTRAR CADA LINEA DE CUOTA -->
               <form>
                 <group>
                   <field name="p_date"/>
