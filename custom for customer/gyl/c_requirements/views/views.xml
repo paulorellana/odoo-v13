@@ -1,0 +1,78 @@
+<odoo>
+  <data>
+  
+    <record model="ir.ui.view" id="id_logo2">
+      <field name="name">Segundo logo</field>
+      <field name="model">res.company</field>
+      <field name="inherit_id" ref="base.view_company_form"/>
+      <field name="arch" type="xml">
+         <field name="website" position="after">
+           <field name="tradename"/>
+         </field>
+        <field name="favicon" position="after">
+           <field name="logo2"/>
+         </field>
+      </field>
+    </record> 
+
+     <record model="ir.ui.view" id="data_product">
+      <field name="name">add fields form product</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <field name="uom_id" position="before">
+          <field name="n_porc_utilidad"/>
+        </field>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="abc_view">
+      <field name="name">Categoria ABC</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+      	 <field name="website" position="after">
+	         <field name="abc"/>
+	       </field>
+      </field>
+    </record>
+
+    <record id="view_pos_config_form2" model="ir.ui.view">
+        <field name="name">pos.config.form.view.inherit.pos.journals2</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <field name="module_pos_discount" position="after">
+	              <field name="restrict_price_control"/>
+	          </field>
+        </field>
+    </record>
+
+
+<!--
+    <record model="ir.ui.view" id="crm_lead_view">
+      <field name="name">add dates to crm lead</field>
+      <field name="model">crm.lead</field>
+      <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+      <field name="arch" type="xml">
+        <field name="tag_ids" position="after">
+          <field name="begin_date"/>
+          <field name="finish_date"/>
+        </field>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="projec_task_view">
+      <field name="name">add dates to project task</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+        <field name="tag_ids" position="after">
+          <field name="begin_date"/>
+          <field name="finish_date"/>
+        </field>
+      </field>
+    </record>
+-->
+  </data>
+</odoo>
