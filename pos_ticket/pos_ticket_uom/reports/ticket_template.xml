@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="assets_pos_ticket_format_invoice_add_uom" name="invoice tickets extensds uom" inherit_id="web.report_assets_common">
+            <xpath expr="." position="inside">
+                <link href="/pos_ticket_uom/static/src/css/main.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+
+        <template id="add_uom_report_invoice_document_tickets" name="invoice tickets extensds uom"
+                  inherit_id="pos_ticket_format_invoice.report_invoice_document_tickets">
+
+            <xpath expr="//div[@class='pos-receipt-print-ticket']/table[@class='table-ticket']//th[@name='th_quantity']" position="after">
+                <th name="th_UdM" class="text-center">
+                    <span>UdM</span>
+                </th>
+            </xpath>
+
+            <xpath expr="//div[@class='pos-receipt-print-ticket']/table[@class='table-ticket']/tbody//td[@class='text-center']" position="after">
+                <td class="text-center">
+                    <span t-field="line.product_uom_id.name"/>
+                </td>
+            </xpath>
+
+        </template>
+
+    </data>
+</odoo>

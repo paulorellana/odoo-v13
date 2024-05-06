@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="select_invoice_format_pos_assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/select_invoice_format_pos/static/src/js/print.min.1.6.0.js"/>
+            <script type="text/javascript" src="/select_invoice_format_pos/static/src/js/pos_extended.js"/>
+        </xpath>
+    </template>
+
+</odoo>

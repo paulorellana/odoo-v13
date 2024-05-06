@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="assets_pos_ticket_session_info_g" name="invoice tickets inherit session" inherit_id="web.report_assets_common">
+            <xpath expr="." position="inside">
+                <link href="/pos_ticket_session_info/static/src/css/main.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+
+        <template id="report_invoice_document_tickets_inherit_session_info" inherit_id="pos_ticket_format_invoice.report_invoice_document_tickets">
+            <xpath expr="//table[@class='table-pos-receipt-vendor']/tbody/tr[2]" position="after">
+                <tr>
+                    <td>
+                        <strong>Tienda</strong>
+                    </td>
+                    <td>:</td>
+                    <td>
+                        <t t-foreach="o.pos_order_ids" t-as="order_id">
+                            <t t-if="order_id_first ">
+                                <t t-esc="order_id.session_id.config_id.name "/>
+                            </t>
+                        </t>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Empleado</strong>
+                    </td>
+                    <td>:</td>
+                    <td>
+                        <t t-foreach="o.pos_order_ids" t-as="order_id">
+                            <t t-if="order_id_first ">
+                                <t t-esc="order_id.employee_id.name "/>
+                            </t>
+                        </t>
+                    </td>
+                </tr>
+            </xpath>
+
+            <xpath expr="//div[@class='pos-receipt-print-ticket']/div[@class='total_write']" position="after">
+                <t t-set="payment_method_value" t-value="false"/>
+                <t t-foreach="o.pos_order_ids" t-as="order_id">
+                    <t t-if="order_id_first ">
+                        <t t-foreach="order_id.payment_ids" t-as="payment">
+                            <t t-if="payment">
+                                <t t-if="payment.amount &gt; 0">
+                                    <t t-set="payment_method_value" t-value="true"/>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+                <table t-attf-class="table-session-payment-method#{'' if payment_method_value else '-inv'}">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size: 9px;">
+                        <t t-foreach="o.pos_order_ids" t-as="order_id">
+                            <t t-if="order_id_first ">
+                                <t t-foreach="order_id.payment_ids" t-as="line_payment">
+                                    <t t-if="line_payment.amount &gt; 0">
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    <span t-field="line_payment.payment_method_id.name"/>
+                                                </strong>
+                                            </td>
+                                            <td align="right">
+                                                <span t-field="line_payment.amount"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+
+                <t t-set="payment_method_change_value" t-value="false"/>
+                <t t-foreach="o.pos_order_ids" t-as="order_id">
+                    <t t-if="order_id_first ">
+                        <t t-foreach="order_id.payment_ids" t-as="payment">
+                            <t t-if="payment">
+                                <t t-if="payment.amount &lt; 0">
+                                    <t t-set="payment_method_change_value" t-value="true"/>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+                <table t-attf-class="table-session-payment-method-change#{'' if payment_method_change_value else '-inv'}">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="total" t-value="0.00"/>
+                        <t t-set="moneda" t-value="false"/>
+                        <t t-foreach="o.pos_order_ids" t-as="order_id">
+                            <t t-if="order_id_first ">
+                                <t t-foreach="order_id.payment_ids" t-as="payment">
+                                    <t t-if="payment.amount &lt; 0">
+                                        <t t-set="total" t-value="total + payment.amount"/>
+                                        <t t-set="moneda" t-value="payment.pos_order_id.currency_id"/>
+                                    </t>
+                                </t>
+                            </t>
+                        </t>
+                        <tr>
+                            <td>
+                                <strong>Vuelto</strong>
+                            </td>
+                            <td align="right">
+                                <t t-if="moneda" t-esc="moneda.symbol"/>
+                                <t t-esc="'{:.2f}'.format(abs(total))"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

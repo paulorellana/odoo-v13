@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ReceiptScreenWidget" t-inherit="point_of_sale.ReceiptScreenWidget" t-inherit-mode="extension" owl="1">
+        <xpath expr="//h2[hasclass('print_invoice')]" position="after">
+            <div class="button electronic-receipt">
+                <i class='fa fa-print'></i> Comprobante Electrónico
+            </div>
+        </xpath>
+    </t>
+</templates>
