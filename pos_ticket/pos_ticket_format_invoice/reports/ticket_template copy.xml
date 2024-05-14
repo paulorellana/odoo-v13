@@ -50,21 +50,14 @@
                                     RUC N°
                                     <t t-esc="o.company_id.vat"/>
                                 </div>
-                                <div t-if="o.type_document_id == '03' ">
-                                    <b> BOLETA DE VENTA ELECTRÓNICA</b>
-							        <br />
+                                <div t-if="o.l10n_latam_document_type_id.report_name or o.name">
+                                    <t t-esc="o.l10n_latam_document_type_id.report_name"/>
                                     <t t-esc="o.name.replace(' ','')"/>
                                 </div>
                                 <div t-if="o.type_document_id == '01' ">
-                                    <b> FACTURA DE VENTA ELECTRÓNICA </b>
-							        <br />
-                                    <t t-esc="o.name.replace(' ','')"/>
+                                    <t t-esc="o.l10n_latam_document_type_id.report_name"/>
                                 </div>
-                                <div t-if="o.type_document_id == '07' ">
-                                    <b> NOTA DE CRÉDITO ELECTRÓNICA </b>
-							        <br />
-                                    <t t-esc="o.name.replace(' ','')"/>
-                                </div>
+
                                 <div style="font-size: 10px;" t-if="o.invoice_date">
                                     <strong>F. Emisión:</strong>
                                     <span t-field="o.invoice_date"/>&amp;nbsp;&amp;nbsp;
