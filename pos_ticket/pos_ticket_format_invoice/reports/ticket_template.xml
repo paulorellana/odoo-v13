@@ -223,7 +223,8 @@
                                                 </td>
 
                                                 <td t-attf-class="text-center">
-                                                    <span class="text-nowrap" t-field="line.price_unit"/>
+                                                    <!-- <span class="text-nowrap" t-field="line.price_unit"/>-->
+                                                     <span class="text-nowrap" t-esc="'{0:,.2f}'.format(line.price_unit)"/> 
                                                 </td>
 
                                                 <td class="text-right o_price_total">
