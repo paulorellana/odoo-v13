@@ -56,7 +56,7 @@
                                     <t t-esc="o.name.replace(' ','')"/>
                                 </div>
                                 <div t-if="o.type_document_id == '01' ">
-                                    <b> FACTURA DE VENTA ELECTRÓNICA </b>
+                                    <b> FACTURA ELECTRÓNICA </b>
 							        <br />
                                     <t t-esc="o.name.replace(' ','')"/>
                                 </div>
