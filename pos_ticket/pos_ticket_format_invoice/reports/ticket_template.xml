@@ -44,6 +44,7 @@
                                     <t t-esc="o.company_id.email"/>
                                 </div>
                                 <div t-if="o.company_id.phone">
+                                    Whatsapp 
                                     <t t-esc="o.company_id.phone"/>
                                 </div>
                                 <div style="font-size: 10px;" t-if="o.company_id.vat">

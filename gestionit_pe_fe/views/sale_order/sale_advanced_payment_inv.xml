@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_advance_payment_inv_inherit_sale_custom" model="ir.ui.view">
+        <field name="name">view.sale.advance.payment.inv.inherit.sale.custom</field>
+        <field name="model">sale.advance.payment.inv</field>
+        <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
+        <field name="arch" type="xml">
+            <xpath expr="//p[@class='oe_grey']" position="replace">
+                <p class="oe_grey">
+                    Las facturas serán creadas en borrador, de modo que puedas revisar antes de validarlas.
+                </p>
+            </xpath>
+            <field name="advance_payment_method" position="attributes">
+                <attribute name="string">Crear Comprobante Electrónico</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="sale.action_view_sale_advance_payment_inv" model="ir.actions.act_window">
+        <field name="name">Crear comprobantes Electrónicos</field>
+    </record>
+</odoo>
