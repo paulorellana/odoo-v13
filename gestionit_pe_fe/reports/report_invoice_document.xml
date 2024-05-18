@@ -343,7 +343,8 @@
                                     <span t-esc="item"/>
                                 </td>
                                 <td class="v_quantity">
-                                    <span t-field="l.quantity"/>
+                                     <!--<span t-field="l.quantity"/>-->
+                                     <span t-esc="'{0:,.0f}'.format(l.quantity)"/>    
                                 </td>
                                 <td class="v_product_uom_id">
                                     <span t-field="l.product_uom_id.name"/>
