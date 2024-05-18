@@ -91,16 +91,21 @@
                                 <label t-esc="'FECHA EMISIÓN:'"/>
                             </th>
                             <td class="label">
-                               <!-- <span t-esc="o.invoice_date" t-if="o.invoice_date"/> 
+                              <div t-if="o.invoice_date">
+                                <!-- <span t-esc="o.invoice_date" t-if="o.invoice_date"/> 
                                 <span t-field="o.invoice_date"/>&amp;nbsp;&amp;nbsp; -->
-                                <span t-field="o.invoice_date" t-options='{"format": "MM/dd/yyyy"}'/>
+                                <span t-field="o.invoice_date" t-options='{"format": "MM/dd/yyyy"}' />
+                              </div>
                             </td>
                             <!-- FECHA DE VENCIMIENTO -->
                             <th>
                                 <label t-esc="'FECHA VENC.:'"/>
                             </th>
                             <td class="label">
-                                <span t-esc="o.invoice_date_due" t-if="o.invoice_date_due"/>
+                              <div t-if="o.invoice_date_due">
+                              <!--  <span t-esc="o.invoice_date_due" t-if="o.invoice_date_due"/>-->
+                                <span t-field="o.invoice_date_due" t-options='{"format": "MM/dd/yyyy"}' />
+                              </div>
                             </td>
                         </tr>
                         <tr>
@@ -187,7 +192,11 @@
                                 <label t-esc="'FECHA EMISIÓN:'"/>
                             </th>
                             <td class="label">
-                                <span t-esc="o.invoice_date" t-if="o.invoice_date"/>
+                                <div t-if="o.invoice_date">
+                                    <!-- <span t-esc="o.invoice_date" t-if="o.invoice_date"/> 
+                                    <span t-field="o.invoice_date"/>&amp;nbsp;&amp;nbsp; -->
+                                    <span t-field="o.invoice_date" t-options='{"format": "MM/dd/yyyy"}' />
+                                </div>
                             </td>
                             <!-- MOTIVO -->
                             <th>
@@ -210,7 +219,11 @@
                                 <label t-esc="'DE FECHA: '"/>
                             </th>
                             <td class="label">
-                                <span t-esc="o.reversed_entry_id.invoice_date" t-if="o.reversed_entry_id.invoice_date"/>
+                               <div t-if="o.reversed_entry_id.invoice_date">
+                                    <!-- <span t-esc="o.reversed_entry_id.invoice_date" t-if="o.reversed_entry_id.invoice_date"/> 
+                                     -->
+                                    <span t-field="o.reversed_entry_id.invoice_date" t-options='{"format": "MM/dd/yyyy"}' />
+                              </div>
                             </td>
                         </tr>
                     </table>
@@ -256,7 +269,11 @@
                                 <label t-esc="'FECHA EMISIÓN:'"/>
                             </th>
                             <td class="label">
-                                <span t-esc="o.invoice_date" t-if="o.invoice_date"/>
+                                <div t-if="o.invoice_date">
+                                    <!-- <span t-esc="o.invoice_date" t-if="o.invoice_date"/> 
+                                    <span t-field="o.invoice_date"/>&amp;nbsp;&amp;nbsp; -->
+                                    <span t-field="o.invoice_date" t-options='{"format": "MM/dd/yyyy"}' />
+                                </div>
                             </td>
                             <!-- MOTIVO -->
                             <th>
@@ -279,7 +296,12 @@
                                 <label t-esc="'DE FECHA: '"/>
                             </th>
                             <td class="label">
-                                <span t-esc="o.debit_origin_id.invoice_date" t-if="o.debit_origin_id.invoice_date"/>
+                                <div t-if="o.debit_origin_id.invoice_date">
+                                    <!-- <span t-esc="o.debit_origin_id.invoice_date" t-if="o.debit_origin_id.invoice_date"/> 
+                                    -->
+                                    <span t-field="o.debit_origin_id.invoice_date" t-options='{"format": "MM/dd/yyyy"}' />
+                              </div>
+                                
                             </td>
                         </tr>
                     </table>
@@ -425,7 +447,8 @@
                                         <span t-esc="'Cuota{:03.0f}'.format(cuota)"/>
                                     </td>
                                     <td width="90px">
-                                        <span t-field="line.date_due"/>
+                                        
+                                        <span t-field="line.date_due" t-options='{"format": "MM/dd/yyyy"}'/>
                                     </td>
                                     <td width="80px">
                                         <span t-field="line.amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
