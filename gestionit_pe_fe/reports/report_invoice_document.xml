@@ -91,7 +91,9 @@
                                 <label t-esc="'FECHA EMISIÓN:'"/>
                             </th>
                             <td class="label">
-                                <span t-esc="o.invoice_date" t-if="o.invoice_date"/>
+                               <!-- <span t-esc="o.invoice_date" t-if="o.invoice_date"/> 
+                                <span t-field="o.invoice_date"/>&amp;nbsp;&amp;nbsp; -->
+                                <span t-field="o.invoice_date" t-options='{"format": "MM/dd/yyyy"}'/>
                             </td>
                             <!-- FECHA DE VENCIMIENTO -->
                             <th>
