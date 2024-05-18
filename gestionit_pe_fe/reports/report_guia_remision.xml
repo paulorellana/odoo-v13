@@ -219,9 +219,10 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col" t-if="has_default_code">Código</th>
+                                            <th scope="col">Cantidad</th>
                                             <th scope="col">Descripción</th>
                                             <th scope="col">Unidad de Medida</th>
-                                            <th scope="col">Cantidad</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -235,14 +236,16 @@
                                                     <span t-if="line.product_id.default_code" t-esc="line.product_id.default_code"/>
                                                 </td>
                                                 <td>
+                                                    <!--<span t-field="line.qty"/>-->
+                                                    <span t-esc="'{0:,.0f}'.format(line.qty)"/>
+                                                </td>
+                                                <td>
                                                     <span t-field="line.description"/>
                                                 </td>
                                                 <td>
                                                     <span t-field="line.uom_id"/>
                                                 </td>
-                                                <td>
-                                                    <span t-field="line.qty"/>
-                                                </td>
+                                               
                                             </tr>
                                             <t t-set="index" t-value="index+1"></t>
                                         </t>

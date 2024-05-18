@@ -155,6 +155,7 @@
                                             <t t-esc="o.partner_id.vat"/>
                                         </td>
                                     </tr>
+                                <!--
                                     <tr>
                                         <td>
                                             <strong>
@@ -166,6 +167,7 @@
                                             <t t-esc="o.partner_id.phone"/>
                                         </td>
                                     </tr>
+                                -->
                                     <tr>
                                         <td>
                                             <strong>Direccion</strong>

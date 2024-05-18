@@ -10,6 +10,7 @@
 
         <template id="report_invoice_document_tickets_inherit_session_info" inherit_id="pos_ticket_format_invoice.report_invoice_document_tickets">
             <xpath expr="//table[@class='table-pos-receipt-vendor']/tbody/tr[2]" position="after">
+               <!--
                 <tr>
                     <td>
                         <strong>Tienda</strong>
@@ -23,6 +24,7 @@
                         </t>
                     </td>
                 </tr>
+                -->
                 <tr>
                     <td>
                         <strong>Empleado</strong>

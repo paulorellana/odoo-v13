@@ -58,10 +58,10 @@
                     <tr>
                         <!-- EMAIL -->
                         <th>
-                            <label t-esc="'E-MAIL : '"/>
+                           <!-- <label t-esc="'E-MAIL : '"/>-->
                         </th>
                         <td>
-                            <span t-esc="doc.partner_id.email" t-if="doc.partner_id.email"/>
+                           <!-- <span t-esc="doc.partner_id.email" t-if="doc.partner_id.email"/>-->
                         </td>
                         <!-- MONEDA -->
                         <th>
