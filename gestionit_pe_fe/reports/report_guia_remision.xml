@@ -26,7 +26,7 @@
                                         <span t-field="o.company_id.email"/>
                                     </div>
                                     <div t-if="o.company_id.phone">
-                                        <b> Teléfono: </b>
+                                        <b> Whatsapp: </b>
                                         <span t-field="o.company_id.phone"/>
                                     </div>
                                 </div>

@@ -20,7 +20,7 @@
                             <span t-field="company.email"/>
                         </div>
                         <div t-if="company.phone">
-                            <b> Teléfono: </b>
+                            <b> Whatsapp: </b>
                             <span t-field="company.phone"/>
                         </div>
                         <div t-if="company.website">

@@ -52,7 +52,7 @@
                         </th>
                         <td>
                             <!--<span t-esc="doc.date_order" t-if="doc.date_order"/>-->
-                            <div t-if="doc.date_order"><span t-field="doc.date_order" t-options='{"format": "MM/dd/yyyy"}'/></div>
+                            <div t-if="doc.date_order"><span t-field="doc.date_order" t-options='{"format": "dd/MM/yyyy"}'/></div>
                         </td>
                     </tr>
                     <tr>
