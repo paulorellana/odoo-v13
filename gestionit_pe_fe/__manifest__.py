@@ -69,6 +69,7 @@
         'reports/external_layout_background_gestionit.xml',
         'reports/report_invoice_document.xml',
         'reports/report_guia_remision.xml',
+        'reports/report_guia_remision_ticket.xml',
         'reports/report.xml',
         'reports/report_saleorder_document.xml',
         'reports/report_purchaseorder_document.xml',
