@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="gestionit_pe_fe.report_guia_remision_template2">
+    <template id="gestionit_pe_fe.report_guia_remision_ticket">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                <!--
