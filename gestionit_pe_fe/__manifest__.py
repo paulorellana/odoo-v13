@@ -21,6 +21,7 @@
         "gestionit_pe_consulta_ruc_dni",
         "gestionit_pe_tipocambio",
         "gestionit_pe_ubicaciones",
+        "pos_ticket_format_invoice",
     ],
     'installable': True,
     'application': True,
