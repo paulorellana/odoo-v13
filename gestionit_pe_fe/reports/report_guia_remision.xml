@@ -30,6 +30,7 @@
                                         <span t-field="o.company_id.phone"/>
                                     </div>
                                 </div>
+                                
                                 <div class="col-4" style="border-style:solid; border-width:thin;">
                                     <div class="text-center">RUC:
                                         <span t-field="o.company_id.vat"/>
