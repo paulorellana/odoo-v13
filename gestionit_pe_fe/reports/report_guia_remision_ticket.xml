@@ -80,20 +80,18 @@
                                         <td>:</td>
                                         <td>
                                             <t t-if="o.partner_id">
-                                                <span t-esc="o.partner_id"/>
+                                                <span t-field="o.partner_id"/>
                                             </t>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>Documento de identidad</strong>
+                                            <strong>Doc.identidad </strong>
                                         </td>
                                         <td>:</td>
                                         <td>
                                             <t t-esc="o.partner_tipo_documento_identidad"/>
-                                        </td>
-                                        <td> </td>
-                                        <td>
+                                            <strong> : </strong>
                                             <t t-esc="o.partner_numero_documento_identidad"/>
                                         </td>
                                     </tr>
