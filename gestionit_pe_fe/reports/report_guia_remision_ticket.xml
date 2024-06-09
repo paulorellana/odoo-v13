@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+     <template id="external_layout_guia_ticket">
+            <div class="article doc_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                 t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-call="web.address_layout"/>
+                <t t-raw="0"/>
+            </div>
+    </template>
     <template id="gestionit_pe_fe.report_guia_remision_ticket">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                <!--
                 <t t-call="gestionit_pe_fe.external_layout_background_gestionit">
                 -->
-                <t t-call="gestionit_pe_fe.external_layout_invoice_ticket">
+
+                <t t-call="gestionit_pe_fe.external_layout_guia_ticket">
 
                     <div class="pos-receipt-print-ticket">
 
