@@ -80,7 +80,7 @@
                                         <td>:</td>
                                         <td>
                                             <t t-if="o.partner_id">
-                                                <t t-esc="o.partner_id"/>
+                                                <span t-esc="o.partner_id"/>
                                             </t>
                                         </td>
                                     </tr>
