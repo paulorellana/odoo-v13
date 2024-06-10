@@ -91,7 +91,7 @@
                                         <td>:</td>
                                         <td>
                                             <t t-esc="o.partner_tipo_documento_identidad"/>
-                                            <strong> : </strong>
+                                            <strong>  </strong>
                                             <t t-esc="o.partner_numero_documento_identidad"/>
                                         </td>
                                     </tr>
@@ -124,7 +124,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <strong>Envio</strong>
+                                            <strong>DATOS DE ENVIO</strong>
                                         </td>
                                         <td>
                                         </td>
@@ -152,7 +152,7 @@
                                     <t t-if="not o.multiple_tramos">
                                         <tr>
                                             <td>
-                                                <strong>Dirección de partida</strong>
+                                                <strong>Dir. partida</strong>
                                             </td>
                                             <td>:</td>
                                             <td>
@@ -162,27 +162,27 @@
                                     </t>
                                     <tr>
                                         <td>
-                                            <strong>Motivo de traslado</strong>
+                                            <strong>M. de traslado</strong>
                                         </td>
                                         <td>:</td>
                                         <td>
-                                            <t t-esc="o.motivo_traslado"/>
+                                            <span t-field="o.motivo_traslado"/>
                                         </td>
                                     </tr>
                                     <t t-if="not o.multiple_tramos">
                                         <tr>
                                             <td>
-                                                <strong>Modalidad de Transporte</strong>
+                                                <strong>M. de Transporte</strong>
                                             </td>
                                             <td>:</td>
                                             <td>
-                                                <t t-esc="o.modalidad_transporte"/>
+                                                <span t-field="o.modalidad_transporte"/>
                                             </td>
                                         </tr>
                                     </t>
                                     <tr>
                                         <td>
-                                            <strong>Peso bruto total(KGM)</strong>
+                                            <strong>Peso bruto(KGM)</strong>
                                         </td>
                                         <td>:</td>
                                         <td>
@@ -192,7 +192,7 @@
                                     <t t-if="not o.multiple_tramos">
                                         <tr>
                                             <td>
-                                                <strong>Dirección de llegada</strong>
+                                                <strong>Dir. llegada</strong>
                                             </td>
                                             <td>:</td>
                                             <td>
@@ -218,11 +218,7 @@
                                         <t t-if="o.modalidad_transporte=='02'">  <!--Transporte privado-->
                                             <tr>
                                                 <td>
-                                                    <strong>Transporte Privado</strong>
-                                                </td>
-                                                <td>
-                                                </td>
-                                                <td>
+                                                    <strong>TRANSPORTE PRIVADO</strong>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -231,7 +227,7 @@
                                                 </td>
                                                 <td>:</td>
                                                 <td>
-                                                    <t t-esc="o.conductor_privado_partner_id"/>
+                                                    <span t-field="o.conductor_privado_partner_id"/>
                                                 </td>
                                             </tr>
                                              <tr>
@@ -240,23 +236,19 @@
                                                 </td>
                                                 <td>:</td>
                                                 <td>
-                                                    <t t-esc="o.vehiculo_privado_id"/>
+                                                    <span t-field="o.vehiculo_privado_id"/>
                                                 </td>
                                             </tr>
                                         </t>
                                         <t t-if="o.modalidad_transporte=='01'">  <!--Transporte publico-->
                                             <tr>
                                                 <td>
-                                                    <strong>Transporte Público</strong>
-                                                </td>
-                                                <td>
-                                                </td>
-                                                <td>
+                                                    <strong>TRANSPORTE PUBLICO</strong>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <strong>Empresa de Transporte</strong>
+                                                    <strong>Emp. de Transporte</strong>
                                                 </td>
                                                 <td>:</td>
                                                 <td>
@@ -269,7 +261,7 @@
                                                 </td>
                                                 <td>:</td>
                                                 <td>
-                                                    <t t-esc="o.conductor_publico_id"/>
+                                                    <span t-field="o.conductor_publico_id"/>
                                                 </td>
                                             </tr>
                                              <tr>
@@ -278,15 +270,15 @@
                                                 </td>
                                                 <td>:</td>
                                                 <td>
-                                                    <t t-esc="o.vehiculo_publico_id"/>
+                                                    <span t-field="o.vehiculo_publico_id"/>
                                                 </td>
                                             </tr>
                                         </t>
                                     </t>       
                                 </tbody>
                             </table>    
-                            <div style="width:100%;">
-                                <b>Detalle de Envío</b>
+                            <div>
+                                <b>DETALLE DE ENVIO</b>
                             </div>
                             <table class="table-ticket">
                                 <thead>
