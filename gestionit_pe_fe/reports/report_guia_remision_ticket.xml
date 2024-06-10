@@ -277,7 +277,7 @@
                                     </t>       
                                 </tbody>
                             </table>    
-                            <div>
+                            <div class="pos-receipt-contact">
                                 <b>DETALLE DE ENVIO</b>
                             </div>
                             <table class="table-ticket">
