@@ -137,7 +137,7 @@
                                         </td>
                                         <td>:</td>
                                         <td>
-                                            <t t-esc="o.fecha_emision"/>
+                                            <t t-field="o.fecha_emision"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -146,7 +146,7 @@
                                         </td>
                                         <td>:</td>
                                         <td>
-                                            <t t-esc="o.fecha_inicio_traslado"/>
+                                            <t t-field="o.fecha_inicio_traslado"/>
                                         </td>
                                     </tr>
                                     <t t-if="not o.multiple_tramos">
