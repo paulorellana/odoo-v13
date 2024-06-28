@@ -1,30 +1,40 @@
 # Copyright 2014-2018 Ivan Yelizariev <https://it-projects.info/team/yelizariev>
 # Copyright 2017 Gabbasov Dinar <https://it-projects.info/team/GabbasovDinar>
-# Copyright 2018-2019 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
+# Copyright 2018 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
 # Copyright 2018 Ildar Nasyrov <https://it-projects.info/team/iledarn>
-# License MIT (https://opensource.org/licenses/MIT).
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 {
-    "name": """POS: show product qty""",
+    "name": """Available quantity of products in POS""",
     "summary": """Adds available quantity at products in POS""",
     "category": "Point Of Sale",
-    # "live_test_url": "http://apps.it-projects.info/shop/product/DEMO-URL?version={ODOO_BRANCH}",
-    "images": ["images/pos_product_available.jpg"],
-    "version": "13.0.1.1.0",
+    "images": [],
+    "version": "0.0.1",
     "application": False,
+
     "author": "IT-Projects LLC, Ivan Yelizariev",
     "support": "pos@it-projects.info",
-    "website": "https://apps.odoo.com/apps/modules/13.0/pos_product_available/",
-    "license": "Other OSI approved licence",  # MIT
+    "website": "https://apps.odoo.com/apps/modules/12.0/pos_product_available/",
+    "license": "LGPL-3",
     # "price": 9.00,
     # "currency": "EUR",
-    "depends": ["point_of_sale", "stock"],
+
+    "depends": [
+        'point_of_sale',
+        'stock',
+    ],
     "external_dependencies": {"python": [], "bin": []},
-    "data": ["data.xml", "views/views.xml"],
-    "qweb": ["static/src/xml/pos.xml"],
+    'data': [
+        'data.xml',
+    ],
+    'qweb': [
+        'static/src/xml/pos.xml',
+    ],
+
     "post_load": None,
     "pre_init_hook": None,
     "post_init_hook": None,
     "uninstall_hook": None,
+
     "auto_install": False,
     "installable": True,
 }
