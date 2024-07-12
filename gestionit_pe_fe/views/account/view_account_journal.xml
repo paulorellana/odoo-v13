@@ -83,6 +83,7 @@
                             <field name="sequence_id" required="0" attrs="{'readonly': 1}" groups="base.group_no_one"/>
                         </div>
                         <field name="electronic_invoice" string="Habilitar para emisión a SUNAT" groups="base.group_no_one"/>
+                        <field name="address_point_emission" />
                         <field name="invoice_reference_type" groups="base.group_no_one" invisible="1"/>
                         <field name="invoice_reference_model" groups="base.group_no_one" invisible="1"/>
                     </group>
