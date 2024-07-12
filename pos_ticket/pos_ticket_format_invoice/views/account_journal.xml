@@ -21,11 +21,9 @@
         <field name="model">account.journal</field>
         <field name="inherit_id" ref="gestionit_pe_fe.view_form_acccount_journal_serie_fe"/>
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='electronic_invoice']" position="after">
-                <group string="Dirección punto de emisión">
-                    <field name="address_point_emission"/>
-                </group>
-            </xpath>
+            <field name="electronic_invoice" position="after">
+                <field name="address_point_emission"/>
+            </field>
         </field>
     </record>
     </data>
